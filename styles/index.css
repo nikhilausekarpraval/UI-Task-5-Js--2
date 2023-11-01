@@ -1,0 +1,81 @@
+.brand-logo{
+    width: 18%;
+    height: auto;
+}
+#activeUserImg{
+    width: 10%;
+    height: auto;
+}
+
+#leftNavigationSecton ,#rightNavigationSecton{
+    width: fit-content;
+}
+
+.text-style{
+    color: rgb(52, 187, 253);
+}
+.chracter-style{
+     padding: 5px 11px;
+     background: rgb(0, 177, 252);
+     color:white;
+}
+#personImage{
+    width: 22px;
+    height: auto;
+}
+
+.filter-options{
+    padding: 5px;
+    width: 15%;
+}
+
+#clearButton{
+    background-color:rgb(105, 186, 0);
+}
+
+#addEmployee{
+    background-color: rgb(0, 176, 252);
+}
+
+.person-image{
+    background-color: rgb(0, 176, 252);
+}
+
+.employee-image{
+    width: 55px;
+    height: auto;
+}
+
+#searchEmployee {
+    border: 1px solid #555;
+    padding-left:35px;
+    background: transparent url("/resources/images/search-icon.png") no-repeat;
+    background-size:10%;
+    background-position-y: 3px;
+    background-position-x: 5px;
+}
+
+.input-style{
+    height: 34px;
+}
+
+#searchOptions{
+    width:180px;
+}
+
+#bodyLeftSection{
+    font-size: 14px;
+    
+}
+
+.hidden {
+    display: none;
+}
+
+#userContact{
+        width: 200px;
+}
+
+#userDirectory div{
+    font-size: 12px;
+}
