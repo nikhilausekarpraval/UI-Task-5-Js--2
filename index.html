@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dictionary</title>
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="px-5 py-3">
+        <div id="header-section" class="d-flex justify-content-between border-bottom p-2">
+            <div id="leftNavigationSecton" class="d-flex align-items-center">
+                <img class="brand-logo" src="./resources/images/saketa.jpg">
+                <div class="pl-3">
+                    <h3 class="m-0 text-style">Employee Directory</h3>
+                    <h5 class="m-0">The Ultimate People Directory Experience</h5>
+                </div>
+            </div>
+            <div id="rightNavigationSection" class="d-flex justify-content-end align-items-end">
+                <h3 class="m-0 text-style">Welcome,<span class="pr-2 text-dark" id="activeUserName">Nikhil</span></h3>
+                <img id="activeUserImg" class="pb-1" src="resources/images/profile.jpg">
+            </div>
+        </div>
+        <div id="body-section" class="pt-4">
+            <div class="pt-1 row">
+                <div id="bodyLeftSection" class="col">
+                    <div class="font-weight-bold mb-2">Departments</div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="text-muted">IT (<span id="itCount"></span>)</li>
+                        <li class="text-muted">Human Resources (<span id="hrCount"></span>)</li>
+                        <li class="text-muted">MD (<span id="mdCount"></span>)</li>
+                        <li class="text-muted">Sales (<span id="salesCount"></span>)</li>
+                    </ul>
+                    <div class="font-weight-bold mb-2">Offices</div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="text-muted">Seattle (<span id="seattleOffice"></span>)</li>
+                        <li class="text-muted">India (<spa id="indiaOffice"></spa>)</li>
+                    </ul>
+                    <div class="font-weight-bold mb-2">Job Titles</div>
+                    <ul class="list-unstyled mb-1" id="list">
+                        <li class="text-muted">SharePoint Practice Head (<span id="SharePointHead"></span>)</li>
+                        <li class="text-muted">.Net Development Lead (<span id=".netLead"></span>)</li>
+                        <li class="text-muted">Recruiting Expert (<span id="recruitingExpert"></span>)</li>
+                        <li class="text-muted">BI Developer (<span id="biDeveloper"></span>)</li>
+                        <li class="text-muted">Business Analyst (<span id="businessAnalyst"></span>)</li>
+                        <li class="text-muted hidden">Full Stack Developer (<span id="fullStackDeveloper"></span>)</li>
+                        <li class="text-muted hidden">Azure Lead (<span id="azureLead"></span>)</li>
+                        <li class="text-muted hidden">React Development Lead (<span id="ReactLead"></span>)</li>
+                    </ul>
+                    <a class="text-decoration-none" onclick="toggleHidden()">view more</a>
+
+                </div>
+                <div id="bodyRightSection" class="col-sm-10">
+                    <ul class="list-unstyled d-flex" id="filterByLetter">
+                        <li class="p-1 person-image mr-1"><img id="personImage" src="/resources/person-icon.png"
+                                class="mb-1"></li>
+                        <li class="chracter-style  mr-1">A</li>
+                        <li class="chracter-style  mr-1">B</li>
+                        <li class="chracter-style  mr-1">C</li>
+                        <li class="chracter-style  mr-1">D</li>
+                        <li class="chracter-style  mr-1">E</li>
+                        <li class="chracter-style  mr-1">F</li>
+                        <li class="chracter-style  mr-1">G</li>
+                        <li class="chracter-style  mr-1">H</li>
+                        <li class="chracter-style  mr-1">I</li>
+                        <li class="chracter-style  mr-1">J</li>
+                        <li class="chracter-style  mr-1">K</li>
+                        <li class="chracter-style  mr-1">L</li>
+                        <li class="chracter-style  mr-1">M</li>
+                        <li class="chracter-style  mr-1">N</li>
+                        <li class="chracter-style  mr-1">O</li>
+                        <li class="chracter-style  mr-1">P</li>
+                        <li class="chracter-style  mr-1">Q</li>
+                        <li class="chracter-style  mr-1">R</li>
+                        <li class="chracter-style  mr-1">S</li>
+                        <li class="chracter-style  mr-1">T</li>
+                        <li class="chracter-style  mr-1">U</li>
+                        <li class="chracter-style  mr-1">V</li>
+                        <li class="chracter-style  mr-1">W</li>
+                        <li class="chracter-style  mr-1">X</li>
+                        <li class="chracter-style  mr-1">Y</li>
+                        <li class="chracter-style  mr-1">Z</li>
+                    </ul>
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <lable>Search</lable>
+                            <input class="rounded-0 input-style" id="searchEmployee" type="search"
+                                placeholder="Enter any keyword">
+                            <button type="button" id="clearButton"
+                                class="rounded-0 border-0 text-white px-3 ml-4 input-style">Clear</button>
+
+                            <lable class="ml-5">Filter By</lable>
+                            <select class="filter-options input-style rounded-0" id="searchOptions">
+                                <option selected>Preferred Name</option>
+                                <option>Preferred Department</option>
+                                <option>Preferred Office</option>
+                                <option>Preferred Job Title</option>
+                            </select>
+                        </div>
+
+                        <button id="addEmployee" class="border-0 text-white input-style">Add Employee</button>
+
+                    </div>
+                    <div>
+                        <span class="">Note:</span><span>Please use the advanced filter options to refine your
+                            results.</span>
+                    </div>
+                    <div id="employeeDirectorySection" class="border p-3">
+
+                        <div class="bg-light"id="userContact">
+                            <div class="row p-2" >
+                                <div class="col col-sm-4 pl-2 pr-0">
+                                    <img class="employee-image ml-2" src="/resources/images/profile.jpg">
+                                </div>
+                                <div class="col col-sm-8 pl-2 pr-0" id="userDirectory">
+                                    <div class="font-weight-bold employee-name" id="employeeName">Card title</div>
+                                    <div class="text-muted" id="employeePosition">SharePoint Head</div>
+                                    <div class="text-muted" id="employeeDepartment">IT Department</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleHidden() {
+            var hiddenItems = document.querySelectorAll('.hidden');
+            hiddenItems.forEach(function (item) {
+                item.style.display = (item.style.display === 'none' || item.style.display === 'block') ? 'list-item' : 'none';
+            });
+        }
+    </script>
+</body>
+
+</html>
