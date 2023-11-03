@@ -30,29 +30,29 @@
         </div>
         <div id="body-section" class="pt-4">
             <div class="pt-1 row">
-                <div id="bodyLeftSection" class="col">
+                <div id="bodyLeftSection" class="col pr-0">
                     <div class="font-weight-bold mb-2">Departments</div>
                     <ul class="list-unstyled mb-4">
-                        <li class="text-muted">IT (<span id="itCount"></span>)</li>
-                        <li class="text-muted">Human Resources (<span id="hrCount"></span>)</li>
-                        <li class="text-muted">MD (<span id="mdCount"></span>)</li>
-                        <li class="text-muted">Sales (<span id="salesCount"></span>)</li>
+                        <li class="text-muted">IT (<span id="itCount" class="departments"></span>)</li>
+                        <li class="text-muted">Human Resources (<span id="hrCount" class="departments"></span>)</li>
+                        <li class="text-muted">MD (<span id="mdCount" class="departments"></span>)</li>
+                        <li class="text-muted">Sales (<span id="salesCount" class="departments"></span>)</li>
                     </ul>
                     <div class="font-weight-bold mb-2">Offices</div>
                     <ul class="list-unstyled mb-4">
-                        <li class="text-muted">Seattle (<span id="seattleOffice"></span>)</li>
-                        <li class="text-muted">India (<spa id="indiaOffice"></spa>)</li>
+                        <li class="text-muted">Seattle (<span id="seattleOffice" class="offices"></span>)</li>
+                        <li class="text-muted">India (<spa id="indiaOffice" class="offices"></spa>)</li>
                     </ul>
                     <div class="font-weight-bold mb-2">Job Titles</div>
                     <ul class="list-unstyled mb-1" id="list">
-                        <li class="text-muted">SharePoint Practice Head (<span id="SharePointHead"></span>)</li>
-                        <li class="text-muted">.Net Development Lead (<span id=".netLead"></span>)</li>
-                        <li class="text-muted">Recruiting Expert (<span id="recruitingExpert"></span>)</li>
-                        <li class="text-muted">BI Developer (<span id="biDeveloper"></span>)</li>
-                        <li class="text-muted">Business Analyst (<span id="businessAnalyst"></span>)</li>
-                        <li class="text-muted hidden">Full Stack Developer (<span id="fullStackDeveloper"></span>)</li>
-                        <li class="text-muted hidden">Azure Lead (<span id="azureLead"></span>)</li>
-                        <li class="text-muted hidden">React Development Lead (<span id="ReactLead"></span>)</li>
+                        <li class="text-muted">SharePoint Practice Head (<span id="SharePointHead" class="job-titles"></span>)</li>
+                        <li class="text-muted">.Net Development Lead (<span id=".netLead" class="job-titles"></span>)</li>
+                        <li class="text-muted">Recruiting Expert (<span id="recruitingExpert" class="job-titles"></span>)</li>
+                        <li class="text-muted">BI Developer (<span id="biDeveloper" class="job-titles"></span>)</li>
+                        <li class="text-muted">Business Analyst (<span id="businessAnalyst" class="job-titles"></span>)</li>
+                        <li class="text-muted hidden">Full Stack Developer (<span id="fullStackDeveloper" class="job-titles"></span>)</li>
+                        <li class="text-muted hidden">Azure Lead (<span id="azureLead" class="job-titles"></span>)</li>
+                        <li class="text-muted hidden">React Development Lead (<span id="ReactLead" class="job-titles"></span>)</li>
                     </ul>
                     <a class="text-decoration-none" onclick="toggleHidden()">view more</a>
 
@@ -61,47 +61,47 @@
                     <ul class="list-unstyled d-flex justify-content-between" id="filterByLetter">
                         <li class="chracter-style person-image"><img id="personImage" src="/resources/person-icon.png"
                                 class="mb-1"></li>
-                        <li class="chracter-style">A</li>
-                        <li class="chracter-style">B</li>
-                        <li class="chracter-style">C</li>
-                        <li class="chracter-style">D</li>
-                        <li class="chracter-style">E</li>
-                        <li class="chracter-style">F</li>
-                        <li class="chracter-style">G</li>
-                        <li class="chracter-style">H</li>
-                        <li class="chracter-style">I</li>
-                        <li class="chracter-style">J</li>
-                        <li class="chracter-style">K</li>
-                        <li class="chracter-style">L</li>
-                        <li class="chracter-style">M</li>
-                        <li class="chracter-style">N</li>
-                        <li class="chracter-style">O</li>
-                        <li class="chracter-style">P</li>
-                        <li class="chracter-style">Q</li>
-                        <li class="chracter-style">R</li>
-                        <li class="chracter-style">S</li>
-                        <li class="chracter-style">T</li>
-                        <li class="chracter-style">U</li>
-                        <li class="chracter-style">V</li>
-                        <li class="chracter-style">W</li>
-                        <li class="chracter-style">X</li>
-                        <li class="chracter-style">Y</li>
-                        <li class="chracter-style">Z</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('A')">A</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('B')">B</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('c')">C</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('d')">D</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('e')">E</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('f')">F</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('g')">G</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('h')">H</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('i')">I</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('j')">J</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('k')">K</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('l')">L</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('m')">M</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('n')">N</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('o')">O</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('p')">P</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('q')">Q</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('r')">R</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('s')">S</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('t')">T</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('u')">U</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('v')">V</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('w')">W</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('x')">X</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('y')">Y</li>
+                        <li class="chracter-style" onclick="searchByAlphabet('z')">Z</li>
                     </ul>
                     <div class="d-flex justify-content-between">
                         <div class="">
                             <lable>Search</lable>
-                            <input class="rounded-0 input-style" id="searchEmployee" type="search"
+                            <input class="rounded-0 input-style" id="searchEmployee" oninput="searchEmployee(this)"  type=""
                                 placeholder="Enter any keyword">
                             <button type="button" id="clearButton"
-                                class="rounded-0 border-0 text-white px-3 ml-4 input-style">Clear</button>
+                                class="rounded-0 border-0 text-white px-3 ml-4 input-style" onclick="clearSearch()">Clear</button>
 
                             <lable class="ml-5">Filter By</lable>
                             <select class="filter-options input-style rounded-0" id="searchOptions">
-                                <option selected>Preferred Name</option>
-                                <option>Preferred Department</option>
-                                <option>Preferred Office</option>
-                                <option>Preferred Job Title</option>
+                                <option value="name" selected>Preferred Name</option>
+                                <option value="department">Preferred Department</option>
+                                <option value="office">Preferred Office</option>
+                                <option value="jobTitle">Preferred Job Title</option>
                             </select>
                         </div>
 
@@ -255,7 +255,9 @@
                             </div>
                         </div>
                         <div class="employee-directory-border">
+                            <h4 id="noContactFound" class="text-danger"></h4>
                             <div id="employeeDirectorySection" class="p-3">
+                            
 
                             </div>
                         </div>
@@ -263,6 +265,7 @@
                 </div>
             </div>
         </div>
+        <script src="/scripts/constant.js"></script>
         <script src="/scripts/service.js"></script>
         <script src="/scripts/helper.js"></script>
         <script src="/scripts/regex.js"></script>
