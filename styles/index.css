@@ -15,12 +15,16 @@
     color: rgb(52, 187, 253);
 }
 .chracter-style{
-     padding: 5px 11px;
+     width: 33px;
+     height: 35px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
      background: rgb(0, 177, 252);
      color:white;
 }
 #personImage{
-    width: 22px;
+    width: 24px;
     height: auto;
 }
 
@@ -42,7 +46,7 @@
 }
 
 .employee-image{
-    width: 55px;
+    width: 64px;
     height: auto;
 }
 
@@ -51,7 +55,7 @@
     padding-left:35px;
     background: transparent url("/resources/images/search-icon.png") no-repeat;
     background-size:10%;
-    background-position-y: 3px;
+    background-position-y: 5px;
     background-position-x: 5px;
 }
 
@@ -72,10 +76,41 @@
     display: none;
 }
 
-#userContact{
-        width: 200px;
+.user-contact{
+    width: 231px;
 }
 
 #userDirectory div{
     font-size: 12px;
 }
+
+.employee-block{
+    background-color: rgb(233, 232, 232);
+}
+
+#employeeDirectorySection{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 20px 8px;
+}
+
+#form-modal{
+    width: 70%;
+}
+
+.form-section-style label{
+    font-size: 14px;
+}
+
+.employee-directory-border{
+    border: 1px solid rgb(186, 184, 184);
+    height: 20rem;
+}
+
+.icon-color{
+    color: rgb(150, 149, 149);
+}
+
+#userDirectory div:nth-last-child(-n+3) {
+    font-size: 10px; /* replace 16px with your desired font size */
+  }
