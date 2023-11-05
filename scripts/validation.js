@@ -9,7 +9,7 @@ function displayError(field, message) {
   
   //if validate then clear error field
   function clearError(field) {
-    document.getElementById(field + "Error").innerHTML = '';
+    getElement(field + "Error").innerHTML = '';
   }
   
   //if their is any error in form not submitting the form
@@ -17,7 +17,7 @@ function displayError(field, message) {
     var result = 0
     var elements = getByClassName('errorStyle');
     for (var i = 0; i < elements.length; i++) {
-      if(elements[i].innerHTML != ''){
+      if(elements[i].innerHTML !== ''){
         result++;
       }       
     }
@@ -38,18 +38,17 @@ function displayError(field, message) {
   
       case 'firstName':
           firstName = value;
-          inputErrors = !namePattern.test(firstName.trim()) ? displayError("firstName", "Name cannot be empty and must start with a character") : clearError("firstName");
+          inputErrors = !namePattern.test(firstName.trim()) ? displayError("firstName", "Name can't be emtpty and start with number") : clearError("firstName");
           break;
 
       case 'lastName':
           lastName = value;
-          inputErrors = !namePattern.test(lastName.trim()) ? displayError("lastName", "Name cannot be empty and must start with a character") : clearError("lastName");
+          inputErrors = !namePattern.test(lastName.trim()) ? displayError("lastName", "Name can't be emtpty and start with number") : clearError("lastName");
           break;
   
       case 'email':
           email = value;
-          inputErrors = (!emailregex1.test(email.trim()) || !emailregex2.test(email.trim()) || !emailregex3.test(email.trim())) ?
-              displayError("email", "Email format is wrong") : clearError("email");
+          inputErrors = (!emailregex1.test(email.trim()) || !emailregex2.test(email.trim()) || !emailregex3.test(email.trim())) ? displayError("email", "Email format is wrong") : clearError("email");
           break;
   
       case 'mobile':
@@ -61,22 +60,22 @@ function displayError(field, message) {
   
       case 'office':
         office = value;
-        inputErrors = (office.trim() === "") ? displayError("office", "Please enter some text") : clearError("office");
+        inputErrors = (office.trim() === "") ? displayError("office", "Please enter office place") : clearError("office");
         break;
   
       case 'department':
         department = value;
-        inputErrors = (department.trim() === "") ? displayError("department", "Please enter some text") : clearError("department");
+        inputErrors = (department.trim() === "") ? displayError("department", "Please enter department name") : clearError("department");
         break;
   
       case 'skype':
           skype = value;
-          inputErrors = (skype.trim() === "") ? displayError("skype", "Please enter some text") : clearError("skype");
+          inputErrors = (skype.trim() === "" || !emailregex1.test(skype.trim()) || !emailregex2.test(skype.trim()) || !emailregex3.test(skype.trim())) ? displayError("skype", "Please enter valid  id") : clearError("skype");
           break;
   
      case 'jobTitle':
           jobTitle = value;
-          inputErrors = (jobTitle.trim() === "") ? displayError("jobTitle", "Please enter some text") : clearError("jobTitle");
+          inputErrors = (jobTitle.trim() === "") ? displayError("jobTitle", "Please enter valid job title text") : clearError("jobTitle");
           break;
 
       default:
@@ -94,7 +93,7 @@ function displayError(field, message) {
   //on submiting the form checks for empty fields
   function validateUser() {
   inputErrors = true;
-  var newUserData = getAddress();
+  var newUserData = getEmployee()
      validateField('firstName', newUserData.elements['firstName'].value);
      validateField('lastName', newUserData.elements['lastName'].value);
      validateField('email', newUserData.elements['email'].value);
@@ -106,3 +105,5 @@ function displayError(field, message) {
   
   return inputErrors;
   }
+
+

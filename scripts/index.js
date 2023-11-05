@@ -3,13 +3,24 @@
     var activeDirectory ;
     var employeeContact;
 
+    scrollVisible();
+
+    function scrollVisible(){
+        var employeeDirectoryStyle = getElement("employeeDirectoryStyle");
+        if (employeeDirectoryStyle.scrollHeight > employeeDirectoryStyle.clientHeight) {
+            employeeDirectoryStyle.style.overflowY = "scroll";
+        } 
+    }
+
+        
+
     initializeDirectorys()
 
-function generateGuid() {
-    function str() {
-        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    }
-    return (str() + str() + "-" + str() + "-4" + str().slice(0, 3) + "-" + str() + "-" + str() + str() + str()).toLowerCase();
+    function generateGuid() {
+        function str() {
+            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        }
+        return (str() + str() + "-" + str() + "-4" + str().slice(0, 3) + "-" + str() + "-" + str() + str() + str()).toLowerCase();
     }
 
     function initializeDirectorys() {
@@ -34,7 +45,7 @@ function generateGuid() {
 
 function addEmployee(e){
         e.preventDefault();
-//    if (validateInput() && validateUser()) {
+   if (validateInput() && validateUser()) {
     let newUserData = getEmployee();
     var formData = {
       id: generateGuid(),
@@ -50,10 +61,12 @@ function addEmployee(e){
     usersDirectory.push(formData);
     updateDirectory()
     createEmployee(formData);
+    getCountOfEmployee()
     // hideNoAddress();
-       myForm.reset();
+      hideModal();
+      myForm.reset();
   }
-
+}
   function createEmployee(formData){
 
     var id = document.createElement('div');
@@ -64,12 +77,12 @@ function addEmployee(e){
         id.setAttribute('data-toggle',"modal");
 
         var row = document.createElement('div');
-        row.setAttribute('class','row p-2');
+        row.setAttribute('class','row p-2 m-0');
 
         insertElement(id,row);
 
     var leftCol = document.createElement('div');
-        leftCol.setAttribute('class','col col-sm-4 pl-3 pr-0');
+        leftCol.setAttribute('class','col col-sm-4 pl-1 pr-0');
     var img = document.createElement('img');
         img.setAttribute('class','employee-image');
         img.setAttribute('src','/resources/images/profile.jpg');
@@ -78,7 +91,7 @@ function addEmployee(e){
         insertElement(row,leftCol);
 
     var rightCol = document.createElement('div');
-        rightCol.setAttribute('class','col col-sm-8 pr-0 pl-2');
+        rightCol.setAttribute('class','col col-sm-8 pr-0 pl-1');
         rightCol.setAttribute('id','userDirectory');
         insertElement(row,rightCol);
 
@@ -146,6 +159,7 @@ function addEmployee(e){
    }
 
    function updateDirecotry(){
+    if (validateInput() && validateUser()) {
     let newUserData = getEmployee();
 
     activeDirectory.firstName  = newUserData.elements['firstName'].value 
@@ -164,14 +178,18 @@ function addEmployee(e){
     userContact[1].innerHTML = activeDirectory.jobTitle;
     userContact[2].innerHTML = activeDirectory.department;
     updateDirectory()
+    getCountOfEmployee()
+    hideModal()
     myForm.reset();
 
    }
-
+ }
    function deleteDirectory(){
      usersDirectory = usersDirectory.filter(user => user.id !== employeeContact.id);
      updateDirectory()
       employeeContact.remove();
+      getCountOfEmployee()
+      hideModal()
       myForm.reset();
     //   hideNoAddress();
    }
@@ -261,11 +279,12 @@ function searchByAlphabet(letter){
        count<=0 ? displayNoContactFound('No employee name start with that letter..!!') : displayNoContactFound(''); 
 }
 
+//function to display no contact found in directory
 function displayNoContactFound(message){
         element = getElement('noContactFound').innerHTML = message;
 }
 
-
+//function to get count of employees based on jobTitle , department, and office
  function getCountOfEmployee(){
 
     for(let i =0 ; i<departments.length ;i++){
@@ -281,9 +300,11 @@ function displayNoContactFound(message){
     }
 
     displayDepartmentCount();
+    scrollVisible();
 
     }
 
+    //display the current count of employees based on department , office and jobTitle
     function displayDepartmentCount(){
    
        let department = getByClassName('departments');
@@ -301,3 +322,47 @@ function displayNoContactFound(message){
                      jobTitles[i].innerHTML = jobTitlesCount[i].length;
            }
      }
+
+
+//filtering the employees based on jobTtitle , office and department
+     function findEmployeeByDepartment(department, subDepartment) {
+            subDepartment = subDepartment.trim();
+            let count =0;
+        usersDirectory.forEach(user => {  
+            switch(department){
+                case 'department':
+                    if (user.department.toUpperCase() === subDepartment.toUpperCase()) {
+                        display(user.id);
+                        count++;
+                      } else {
+                        hide(user.id);
+                      }
+                      break;
+                case 'office' :
+                    if (user.office.toUpperCase() === subDepartment.toUpperCase()) {
+                        display(user.id);
+                        count++;
+                      } else {
+                        hide(user.id);
+                      }
+                      break;
+                case 'jobTitle':
+                    if (user.jobTitle.toUpperCase() === subDepartment.toUpperCase()) {
+                        display(user.id);
+                        count++
+                      } else {
+                        hide(user.id);
+                      }
+                      break;
+                }      
+        });
+                count<=0 ? displayNoContactFound('No employees found..!!') : displayNoContactFound('');
+     }
+
+
+         //dispaling and hiding delete update buttons in modal pop-up
+    function confirmChange(option) {
+        option === 'update' ? getElement('modalHeding').innerHTML = 'Update Address' : getElement('modalHeding').innerHTML = 'Delete Address'
+        option === 'update' ? setDisplayBlock(getElement('confirmUpdate')) : setDisplayNone(getElement('confirmUpdate'));
+        option === 'delete' ? setDisplayBlock(getElement('confirmDelete')) : setDisplayNone(getElement('confirmDelete'));
+      }

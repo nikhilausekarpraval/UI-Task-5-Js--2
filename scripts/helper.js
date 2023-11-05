@@ -42,3 +42,8 @@ function insertElement(element, data) {
 function removeUser() {
     setInnerHtmlEmpty(getUserAddress());
 }
+
+//function to hide the modal when we click on cancal or delete submit
+function hideModal() {
+    $('#formModal').modal('hide');
+}

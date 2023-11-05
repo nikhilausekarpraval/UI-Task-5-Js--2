@@ -33,26 +33,26 @@
                 <div id="bodyLeftSection" class="col pr-0">
                     <div class="font-weight-bold mb-2">Departments</div>
                     <ul class="list-unstyled mb-4">
-                        <li class="text-muted">IT (<span id="itCount" class="departments"></span>)</li>
-                        <li class="text-muted">Human Resources (<span id="hrCount" class="departments"></span>)</li>
-                        <li class="text-muted">MD (<span id="mdCount" class="departments"></span>)</li>
-                        <li class="text-muted">Sales (<span id="salesCount" class="departments"></span>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('department', 'IT')">IT (<span id="itCount" class="departments"></span>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('department', 'Human Resources')">Human Resources (<span id="hrCount" class="departments"></span>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('department', 'MD')">MD (<span id="mdCount" class="departments"></span>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('department', 'Sales')">Sales (<span id="salesCount" class="departments"></span>)</li>
                     </ul>
                     <div class="font-weight-bold mb-2">Offices</div>
                     <ul class="list-unstyled mb-4">
-                        <li class="text-muted">Seattle (<span id="seattleOffice" class="offices"></span>)</li>
-                        <li class="text-muted">India (<spa id="indiaOffice" class="offices"></spa>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('office', 'Seattle')">Seattle (<span id="seattleOffice" class="offices"></span>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('office', 'India')">India (<span id="indiaOffice" class="offices"></span>)</li>
                     </ul>
                     <div class="font-weight-bold mb-2">Job Titles</div>
                     <ul class="list-unstyled mb-1" id="list">
-                        <li class="text-muted">SharePoint Practice Head (<span id="SharePointHead" class="job-titles"></span>)</li>
-                        <li class="text-muted">.Net Development Lead (<span id=".netLead" class="job-titles"></span>)</li>
-                        <li class="text-muted">Recruiting Expert (<span id="recruitingExpert" class="job-titles"></span>)</li>
-                        <li class="text-muted">BI Developer (<span id="biDeveloper" class="job-titles"></span>)</li>
-                        <li class="text-muted">Business Analyst (<span id="businessAnalyst" class="job-titles"></span>)</li>
-                        <li class="text-muted hidden">Full Stack Developer (<span id="fullStackDeveloper" class="job-titles"></span>)</li>
-                        <li class="text-muted hidden">Azure Lead (<span id="azureLead" class="job-titles"></span>)</li>
-                        <li class="text-muted hidden">React Development Lead (<span id="ReactLead" class="job-titles"></span>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('jobTitle', 'SharePoint Practice Head')">SharePoint Practice Head (<span id="SharePointHead" class="job-titles"></span>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('jobTitle', '.Net Development Lead')">.Net Development Lead (<span id=".netLead" class="job-titles"></span>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('jobTitle', 'Recruiting Expert')">Recruiting Expert (<span id="recruitingExpert" class="job-titles"></span>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('jobTitle', 'BI Developer')">BI Developer (<span id="biDeveloper" class="job-titles"></span>)</li>
+                        <li class="text-muted" onclick="findEmployeeByDepartment('jobTitle', 'Business Analyst')">Business Analyst (<span id="businessAnalyst" class="job-titles"></span>)</li>
+                        <li class="text-muted hidden" onclick="findEmployeeByDepartment('jobTitle', 'Full Stack Developer')">Full Stack Developer (<span id="fullStackDeveloper" class="job-titles"></span>)</li>
+                        <li class="text-muted hidden" onclick="findEmployeeByDepartment('jobTitle', 'Azure Lead')">Azure Lead (<span id="azureLead" class="job-titles"></span>)</li>
+                        <li class="text-muted hidden" onclick="findEmployeeByDepartment('jobTitle', 'React Development Lead')">React Development Lead (<span id="ReactLead" class="job-titles"></span>)</li>
                     </ul>
                     <a class="text-decoration-none" onclick="toggleHidden()">view more</a>
 
@@ -135,8 +135,7 @@
                                                             <label class="d-inline-flex mb-0"
                                                                 for="inputFirstName"><strong>First Name</strong>
                                                                 <div id="firstNameError"
-                                                                    class="errorStyle pl-3 text-danger">
-                                                                </div>
+                                                                    class="errorStyle pl-3 text-danger"></div>
                                                             </label>
                                                             <input type="text" name='firstName'
                                                                 class="form-control rounded-0" id="inputFirstName"
@@ -148,8 +147,7 @@
                                                             <label class="d-inline-flex mb-0"
                                                                 for="inputLastName"><strong>Last Name</strong>
                                                                 <div id="lastNameError"
-                                                                    class="errorStyle pl-3 text-danger">
-                                                                </div>
+                                                                    class="errorStyle pl-3 text-danger"></div>
                                                             </label>
                                                             <input type="text" name='lastName'
                                                                 class="form-control rounded-0" id="inputLastName"
@@ -161,8 +159,7 @@
                                                     <div class="form-group mb-2">
                                                         <label class="d-inline-flex mb-0"
                                                             for="inputEmail"><strong>Email</strong>
-                                                            <div id="emailError" class="errorStyle pl-3 text-danger ">
-                                                            </div>
+                                                            <div id="emailError" class="errorStyle pl-3 text-danger "></div>
                                                         </label>
                                                         <input type="email" name="email" class="form-control rounded-0"
                                                             id="inputEmail" maxlength="40" autocomplete="off"
@@ -172,8 +169,7 @@
                                                         <div class="form-group col-md-6 mb-0 pr-3">
                                                             <label class="d-inline-flex mb-0"
                                                                 for="inputMobile"><strong>Mobile</strong>
-                                                                <div id="mobileError"
-                                                                    class="errorStyle pl-3 text-danger "></div>
+                                                                <div id="mobileError"class="errorStyle pl-3 text-danger "></div>
                                                             </label>
                                                             <input type="text" name="mobile" maxlength="10"
                                                                 minlength="10" class="form-control rounded-0"
@@ -184,12 +180,11 @@
                                                         <div class="form-group col-md-6 mb-0 pl-2">
                                                             <label class="d-inline-flex mb-0"
                                                                 for="inputDepartment"><Strong>Department</Strong>
-                                                                <div id="departmentError"
-                                                                    class="errorStyle pl-3 text-danger "></div>
+                                                                <div id="departmentError"class="errorStyle pl-3 text-danger "></div>
                                                             </label>
                                                             <input type="text" name="department"
                                                                 class="form-control rounded-0" id="inputDepartment"
-                                                                maxlength="12" minlength="12"
+                                                                maxlength="30" minlength="30"
                                                                 oninput="RunTimeValidation(this.value,'department')"
                                                                 autocomplete="off" required>
                                                         </div>
@@ -199,8 +194,7 @@
                                                             <label class="d-inline-flex mb-0"
                                                                 for="inputJobTitle"><strong>Job Title</strong>
                                                                 <div id="jobTitleError"
-                                                                    class="errorStyle pl-3 text-danger ">
-                                                                </div>
+                                                                    class="errorStyle pl-3 text-danger "></div>
                                                             </label>
                                                             <input type="text" name="jobTitle"
                                                                 class="form-control rounded-0" id="inputjobTitle"
@@ -212,8 +206,7 @@
                                                             <label class="d-inline-flex mb-0"
                                                                 for="inputOffice"><strong>Office</strong>
                                                                 <div id="officeError"
-                                                                    class="errorStyle pl-3 text-danger ">
-                                                                </div>
+                                                                    class="errorStyle pl-3 text-danger "></div>
                                                             </label>
                                                             <input type="text" name="office"
                                                                 class="form-control rounded-0" id="inputOffice"
@@ -225,8 +218,7 @@
                                                     <div class="form-group mb-2">
                                                         <label class="d-inline-flex mb-0" for="inputSkype"><strong>Skype
                                                                 ID</strong>
-                                                            <div id="skypeError" class="errorStyle pl-3 text-danger ">
-                                                            </div>
+                                                            <div id="skypeError" class="errorStyle pl-3 text-danger "></div>
                                                         </label>
                                                         <input name="skype"
                                                             class="form-control bor rounded-0 overflow-auto"
@@ -241,12 +233,12 @@
                                         <button type="submit" id="submitButton" class="btn btn-primary"
                                             onclick="addEmployee(event)"><span class="px-3">Add</span></button>
                                         <button type="button" id="updateButton" class="btn btn-primary text-white"
-                                            data-toggle="modal" data-target="#myModal"
-                                            onclick="updateDirecotry()"><span
+                                            data-toggle="modal" data-target="#myModal" 
+                                            onclick="confirmChange('update')"><span
                                                 class="">Update</span></button>
                                         <button type="button" id="deleteButton" class="btn btn-primary text-white"
                                             data-toggle="modal" data-target="#myModal"
-                                            onclick="deleteDirectory()"><span
+                                            onclick="confirmChange('delete')"><span
                                                 class="">Delete</span></button>
                                         <button type="button" id="modalCancalButton" class="btn btn-secondary px-2"
                                             data-dismiss="modal" onclick="cancelUpdate(event)">Cancel</button>
@@ -254,14 +246,33 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="employee-directory-border">
-                            <h4 id="noContactFound" class="text-danger"></h4>
-                            <div id="employeeDirectorySection" class="p-3">
-                            
-
-                            </div>
+                    </div>
+                    <div class="employee-directory-border" id="employeeDirectoryStyle">
+                        <h4 id="noContactFound" class="text-danger"></h4>
+                        <div id="employeeDirectorySection" class="p-3">
+                    
                         </div>
                     </div>
+                    <div id="popMassage">
+                        <div class="modal" id="myModal">
+                          <div class="modal-dialog-centered w-25 ml-auto mr-auto">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 id="modalHeding" class="modal-title">Heading</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+                              <div class="modal-body">
+                                Select Below option
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmUpdate" onclick="updateDirecotry(event)">Update</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmDelete" onclick="deleteDirectory()">Delete</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </div>
             </div>
         </div>
