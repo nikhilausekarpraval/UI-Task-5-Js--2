@@ -1,5 +1,3 @@
-
-
 // Allow only characters in starting
 const namePattern = /^[a-zA-Z]/;
 

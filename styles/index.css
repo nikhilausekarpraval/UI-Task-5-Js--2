@@ -75,7 +75,6 @@
 
 #bodyLeftSection{
     font-size: 14px;
-    
 }
 
 .hidden {
@@ -114,8 +113,8 @@
 }
 
 #employeeDirectoryStyle{
-    height: 52vh;
-    overflow-y: none;
+    height: 54vh;
+    overflow-y: scroll;
 }
 
 .icon-color{

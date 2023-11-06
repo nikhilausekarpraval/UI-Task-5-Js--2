@@ -47,3 +47,19 @@ function removeUser() {
 function hideModal() {
     $('#formModal').modal('hide');
 }
+
+//function to display no contact found in directory
+function displayNoContactFound(message) {
+    element = getElement('noContactFound').innerHTML = message;
+}
+
+//function to remove text from search input 
+function clearSearch() {
+    getElement('searchEmployee').value = '';
+}
+
+//search baed on options
+function getSearchOption() {
+    var selectBox = getElement('searchOptions')//gettting this option by getElemetnby id 
+    return selectBox.value;
+}

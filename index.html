@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div id="rightNavigationSection" class="d-flex justify-content-end align-items-end">
-                <h3 class="m-0 text-style">Welcome,<span class="pr-2 text-dark" id="activeUserName">Nikhil</span></h3>
+                <h3 class="m-0 text-style">Welcome,<span class="pr-2 text-dark" id="activeUserName"> Nikhil Ausekar</span></h3>
                 <img id="activeUserImg" class="pb-1" src="resources/images/profile.jpg">
             </div>
         </div>
@@ -55,47 +55,46 @@
                         <li class="text-muted hidden" onclick="findEmployeeByDepartment('jobTitle', 'React Development Lead')">React Development Lead (<span id="ReactLead" class="job-titles"></span>)</li>
                     </ul>
                     <a class="text-decoration-none" onclick="toggleHidden()">view more</a>
-
                 </div>
                 <div id="bodyRightSection" class="col-sm-10">
                     <ul class="list-unstyled d-flex justify-content-between" id="filterByLetter">
                         <li class="chracter-style person-image"><img id="personImage" src="/resources/person-icon.png"
                                 class="mb-1"></li>
-                        <li class="chracter-style" onclick="searchByAlphabet('A')">A</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('B')">B</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('c')">C</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('d')">D</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('e')">E</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('f')">F</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('g')">G</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('h')">H</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('i')">I</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('j')">J</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('k')">K</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('l')">L</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('m')">M</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('n')">N</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('o')">O</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('p')">P</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('q')">Q</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('r')">R</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('s')">S</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('t')">T</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('u')">U</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('v')">V</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('w')">W</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('x')">X</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('y')">Y</li>
-                        <li class="chracter-style" onclick="searchByAlphabet('z')">Z</li>
+                        <li class="chracter-style" onclick="searchEmployee('','A')">A</li>
+                        <li class="chracter-style" onclick="searchEmployee('','B')">B</li>
+                        <li class="chracter-style" onclick="searchEmployee('','C')">C</li>
+                        <li class="chracter-style" onclick="searchEmployee('','D')">D</li>
+                        <li class="chracter-style" onclick="searchEmployee('','E')">E</li>
+                        <li class="chracter-style" onclick="searchEmployee('','F')">F</li>
+                        <li class="chracter-style" onclick="searchEmployee('','G')">G</li>
+                        <li class="chracter-style" onclick="searchEmployee('','H')">H</li>
+                        <li class="chracter-style" onclick="searchEmployee('','I')">I</li>
+                        <li class="chracter-style" onclick="searchEmployee('','J')">J</li>
+                        <li class="chracter-style" onclick="searchEmployee('','K')">K</li>
+                        <li class="chracter-style" onclick="searchEmployee('','L')">L</li>
+                        <li class="chracter-style" onclick="searchEmployee('','M')">M</li>
+                        <li class="chracter-style" onclick="searchEmployee('','N')">N</li>
+                        <li class="chracter-style" onclick="searchEmployee('','O')">O</li>
+                        <li class="chracter-style" onclick="searchEmployee('','P')">P</li>
+                        <li class="chracter-style" onclick="searchEmployee('','Q')">Q</li>
+                        <li class="chracter-style" onclick="searchEmployee('','R')">R</li>
+                        <li class="chracter-style" onclick="searchEmployee('','S')">S</li>
+                        <li class="chracter-style" onclick="searchEmployee('','T')">T</li>
+                        <li class="chracter-style" onclick="searchEmployee('','U')">U</li>
+                        <li class="chracter-style" onclick="searchEmployee('','V')">V</li>
+                        <li class="chracter-style" onclick="searchEmployee('','W')">W</li>
+                        <li class="chracter-style" onclick="searchEmployee('','X')">X</li>
+                        <li class="chracter-style" onclick="searchEmployee('','Y')">Y</li>
+                        <li class="chracter-style" onclick="searchEmployee('','Z')">Z</li>
                     </ul>
                     <div class="d-flex justify-content-between">
                         <div class="">
                             <lable>Search</lable>
-                            <input class="rounded-0 input-style" id="searchEmployee" oninput="searchEmployee(this)"  type=""
+                            <input class="rounded-0 input-style" id="searchEmployee" oninput="searchEmployee(this,'')" type=""
                                 placeholder="Enter any keyword">
-                            <button type="button" id="clearButton"
-                                class="rounded-0 border-0 text-white px-3 ml-4 input-style" onclick="clearSearch()">Clear</button>
-
+                            <button type="button" id="clearButton" class="rounded-0 border-0 text-white px-3 ml-4 input-style"
+                                onclick="clearSearch()">Clear</button>
+                    
                             <lable class="ml-5">Filter By</lable>
                             <select class="filter-options input-style rounded-0" id="searchOptions">
                                 <option value="name" selected>Preferred Name</option>
@@ -104,16 +103,14 @@
                                 <option value="jobTitle">Preferred Job Title</option>
                             </select>
                         </div>
-
-                        <button id="addEmployee" class="border-0 text-white input-style" data-target="#formModal"
-                            data-toggle="modal" onclick="formOptions(true)">Add Employee</button>
-
+                        <button id="addEmployee" class="border-0 text-white input-style" data-target="#formModal" data-toggle="modal"
+                            onclick="formOptions(true)">Add Employee</button>
+                    
                     </div>
                     <div class="py-2">
                         <span class="">Note:</span><span class="text-muted"> Please use the advanced filter options to
                             refine your results.</span>
                     </div>
-
                     <div class="modal-form-section" id="modalFormSection">
                         <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
@@ -135,7 +132,7 @@
                                                             <label class="d-inline-flex mb-0"
                                                                 for="inputFirstName"><strong>First Name</strong>
                                                                 <div id="firstNameError"
-                                                                    class="errorStyle pl-3 text-danger"></div>
+                                                                    class="errorStyle pl-1 text-danger"></div>
                                                             </label>
                                                             <input type="text" name='firstName'
                                                                 class="form-control rounded-0" id="inputFirstName"
@@ -147,7 +144,7 @@
                                                             <label class="d-inline-flex mb-0"
                                                                 for="inputLastName"><strong>Last Name</strong>
                                                                 <div id="lastNameError"
-                                                                    class="errorStyle pl-3 text-danger"></div>
+                                                                    class="errorStyle pl-1 text-danger"></div>
                                                             </label>
                                                             <input type="text" name='lastName'
                                                                 class="form-control rounded-0" id="inputLastName"
@@ -178,41 +175,44 @@
                                                                 autocomplete="off" required>
                                                         </div>
                                                         <div class="form-group col-md-6 mb-0 pl-2">
-                                                            <label class="d-inline-flex mb-0"
-                                                                for="inputDepartment"><Strong>Department</Strong>
-                                                                <div id="departmentError"class="errorStyle pl-3 text-danger "></div>
+                                                            <label class="d-inline-flex mb-0" for="inputDepartment"><strong>Department</strong>
+                                                                <div id="departmentError" class="errorStyle pl-3 text-danger"></div>
                                                             </label>
-                                                            <input type="text" name="department"
-                                                                class="form-control rounded-0" id="inputDepartment"
-                                                                maxlength="30" minlength="30"
-                                                                oninput="RunTimeValidation(this.value,'department')"
-                                                                autocomplete="off" required>
+                                                            <select name="department" class="form-control rounded-0" id="inputDepartment" oninput="RunTimeValidation(this.value,'department')" required>
+                                                                <option value="" disabled selected>Select Department</option>
+                                                                <option value="IT">IT</option>
+                                                                <option value="Human Resources">Human Resources</option>
+                                                                <option value="MD">MD</option>
+                                                                <option value="Sales">Sales</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-row mb-2">
                                                         <div class="form-group col-md-6 mb-0 pr-3">
-                                                            <label class="d-inline-flex mb-0"
-                                                                for="inputJobTitle"><strong>Job Title</strong>
-                                                                <div id="jobTitleError"
-                                                                    class="errorStyle pl-3 text-danger "></div>
+                                                            <label class="d-inline-flex mb-0" for="inputJobTitle"><strong>Job Title</strong>
+                                                                <div id="jobTitleError" class="errorStyle pl-3 text-danger"></div>
                                                             </label>
-                                                            <input type="text" name="jobTitle"
-                                                                class="form-control rounded-0" id="inputjobTitle"
-                                                                maxlength="40" autocomplete="off"
-                                                                oninput="RunTimeValidation(this.value,'jobTitle')"
-                                                                required>
-                                                        </div>
+                                                            <select name="jobTitle" class="form-control rounded-0" id="inputjobTitle" oninput="RunTimeValidation(this.value,'jobTitle')" required>
+                                                                <option value="" disabled selected>Select Job Title</option>
+                                                                <option value="SharePoint Practice Head">SharePoint Practice Head</option>
+                                                                <option value=".Net Development Lead">.Net Development Lead</option>
+                                                                <option value="Recruiting Expert">Recruiting Expert</option>
+                                                                <option value="BI Developer">BI Developer</option>
+                                                                <option value="Business Analyst">Business Analyst</option>
+                                                                <option value="Full Stack Developer">Full Stack Developer</option>
+                                                                <option value="Azure Lead">Azure Lead</option>
+                                                                <option value="React Development Lead">React Development Lead</option>
+                                                            </select>
+                                                        </div>           
                                                         <div class="form-group col-md-6 mb-0 pl-2">
-                                                            <label class="d-inline-flex mb-0"
-                                                                for="inputOffice"><strong>Office</strong>
-                                                                <div id="officeError"
-                                                                    class="errorStyle pl-3 text-danger "></div>
+                                                            <label class="d-inline-flex mb-0" for="inputOffice"><strong>Office</strong>
+                                                                <div id="officeError" class="errorStyle pl-3 text-danger"></div>
                                                             </label>
-                                                            <input type="text" name="office"
-                                                                class="form-control rounded-0" id="inputOffice"
-                                                                maxlength="40" autocomplete="off"
-                                                                oninput="RunTimeValidation(this.value,'office')"
-                                                                required>
+                                                            <select name="office" class="form-control rounded-0" id="inputOffice" oninput="RunTimeValidation(this.value,'office')" required>
+                                                                <option value="" disabled selected>Select Office</option>
+                                                                <option value="India">India</option>
+                                                                <option value="Seattle">Seattle</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group mb-2">
@@ -220,10 +220,8 @@
                                                                 ID</strong>
                                                             <div id="skypeError" class="errorStyle pl-3 text-danger "></div>
                                                         </label>
-                                                        <input name="skype"
-                                                            class="form-control bor rounded-0 overflow-auto"
-                                                            id="inputSkype" maxlength="150" autocomplete="off"
-                                                            oninput="RunTimeValidation(this.value,'skype')" required>
+                                                        <input name="skype" class="form-control bor rounded-0 overflow-auto" id="inputSkype" maxlength="150"
+                                                            autocomplete="off" oninput="RunTimeValidation(this.value,'skype')" required>
                                                     </div>
                                                 </div>
                                             </form>
@@ -240,8 +238,8 @@
                                             data-toggle="modal" data-target="#myModal"
                                             onclick="confirmChange('delete')"><span
                                                 class="">Delete</span></button>
-                                        <button type="button" id="modalCancalButton" class="btn btn-secondary px-2"
-                                            data-dismiss="modal" onclick="cancelUpdate(event)">Cancel</button>
+                                        <button type="button" class="btn btn-secondary px-2"
+                                            id="editButton" ></button>
                                     </div>
                                 </div>
                             </div>
@@ -250,7 +248,7 @@
                     <div class="employee-directory-border" id="employeeDirectoryStyle">
                         <h4 id="noContactFound" class="text-danger"></h4>
                         <div id="employeeDirectorySection" class="p-3">
-                    
+   
                         </div>
                     </div>
                     <div id="popMassage">
@@ -283,5 +281,4 @@
         <script src="/scripts/validation.js"></script>      
         <script src="/scripts/index.js"></script>
 </body>
-
 </html>

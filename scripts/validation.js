@@ -38,12 +38,12 @@ function displayError(field, message) {
   
       case 'firstName':
           firstName = value;
-          inputErrors = !namePattern.test(firstName.trim()) ? displayError("firstName", "Name can't be emtpty and start with number") : clearError("firstName");
+          inputErrors = !namePattern.test(firstName.trim()) ? displayError("firstName", "name can't be empty & start with number") : clearError("firstName");
           break;
 
       case 'lastName':
           lastName = value;
-          inputErrors = !namePattern.test(lastName.trim()) ? displayError("lastName", "Name can't be emtpty and start with number") : clearError("lastName");
+          inputErrors = !namePattern.test(lastName.trim()) ? displayError("lastName", "name can't be empty & start with number") : clearError("lastName");
           break;
   
       case 'email':
