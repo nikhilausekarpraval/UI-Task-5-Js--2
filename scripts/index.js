@@ -73,7 +73,7 @@ function createEmployee(formData) {
     insertElement(id, row);
 
     var leftCol = document.createElement('div');
-    leftCol.setAttribute('class', 'col col-sm-4 pl-1 pr-0');
+    leftCol.setAttribute('class', 'col col-sm-4 pl-0 pr-0');
     var img = document.createElement('img');
     img.setAttribute('class', 'employee-image');
     img.setAttribute('src', '/resources/images/profile.jpg');

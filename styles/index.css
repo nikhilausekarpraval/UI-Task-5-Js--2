@@ -114,7 +114,7 @@
 
 #employeeDirectoryStyle{
     height: 54vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .icon-color{
