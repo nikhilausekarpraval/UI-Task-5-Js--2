@@ -63,3 +63,8 @@ function getSearchOption() {
     var selectBox = getElement('searchOptions')//gettting this option by getElemetnby id 
     return selectBox.value;
 }
+
+//function to get list of employee cards
+function getEmployeeCards(){
+    return getByClassName('employee-directory');
+}

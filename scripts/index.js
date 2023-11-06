@@ -70,7 +70,7 @@ function createEmployee(formData) {
 
     var id = document.createElement('div');
     id.setAttribute('id', formData.id);
-    id.setAttribute('class', 'employee-block user-contact');
+    id.setAttribute('class', 'employee-directory user-contact');
     id.setAttribute('onclick', 'activeEmployee(this)');
     id.setAttribute('data-target', "#formModal");
     id.setAttribute('data-toggle', "modal");
@@ -221,14 +221,13 @@ function searchEmployee(employee, letter) {
         letter === '' ? count = searchUsingOptions(count, fullName, searchBy, employee, objectId, object) : count = searchUsingAlphabet(count, letter, empName, objectId);
 
     }
-
     count <= 0 ? displayNoContactFound('No such employee found..!!') : displayNoContactFound('');
 }
 
 //function to hide the employee card
 function hide(elementId) {
-    var empList = getByClassName('employee-block');  //getting this block by class name custom function
-    for (let i = 0; i < empList.length; i++) {
+    var empList = getEmployeeCards();  //getting this employee card by class name 
+ for (let i = 0; i < empList.length; i++) {
         if (empList[i].id === elementId) {
             empList[i].style.display = 'none';
             break;
@@ -238,7 +237,7 @@ function hide(elementId) {
 
 // function to display employee card
 function display(elementId) {
-    var empList = getByClassName('employee-block');  //getting this block by class name custom function
+    var empList = getEmployeeCards(); //getting this employee card by class name 
     for (let i = 0; i < empList.length; i++) {
         if (empList[i].id === elementId) {
             empList[i].style.display = 'block';
@@ -286,7 +285,6 @@ function searchUsingAlphabet(cont, letter, empName, objectId) {
     } else {
         hide(objectId);
     }
-
     return count;
 };
 
