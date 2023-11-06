@@ -68,3 +68,9 @@ function getSearchOption() {
 function getEmployeeCards(){
     return getByClassName('employee-directory');
 }
+
+//function to set dispaly of update and delete buttons
+function setUpdateAndDeleteButtons(boolean){
+    boolean ? setDisplayBlock(getElement("updateButton")) : setDisplayNone(getElement("updateButton"));
+    boolean ? setDisplayNone(getElement("deleteButton")) : setDisplayBlock(getElement("deleteButton"));
+}

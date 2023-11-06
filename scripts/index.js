@@ -26,14 +26,6 @@ function initializeDirectorys() {
     }
 }
 
-//function to hide and show jobTitle options
-function toggleHidden() {
-    var hiddenItems = document.querySelectorAll('.hidden');
-    hiddenItems.forEach(function (item) {
-        item.style.display = (item.style.display === 'none' || item.style.display === 'block') ? 'list-item' : 'none';
-    });
-}
-
 //function to display warning if employees not present
 function NoEmployeesFound() {
     getElement('employeeDirectorySection').length == 0 ? displayNoContactFound('No employee present') : displayNoContactFound('');
@@ -128,8 +120,7 @@ function formOptions(value) {
     toogleEditButton(!value);
     editForm(value);
     value ? setDisplayBlock(getElement("submitButton")) : setDisplayNone(getElement("submitButton"));
-    value ? setDisplayNone(getElement("updateButton")) : setDisplayNone(getElement("updateButton"))
-    value ? setDisplayNone(getElement("deleteButton")) : setDisplayBlock(getElement("deleteButton"));
+    setUpdateAndDeleteButtons(value);
 }
 
 //when click on employee card display all details in form 
@@ -187,22 +178,30 @@ function updateDirecotry() {
         userContact[1].innerHTML = activeDirectory.jobTitle;
         userContact[2].innerHTML = activeDirectory.department;
 
-        updateDirectory()
-        getCountOfEmployee()
-        hideModal()
+        updateDirectory();
+        getCountOfEmployee();
+        hideModal();
         myForm.reset();
     }
+}
+
+//function to hide and show jobTitle options
+function toggleHidden() {
+    var hiddenItems = document.querySelectorAll('.hidden');
+    hiddenItems.forEach(function (item) {
+        item.style.display = (item.style.display === 'none' || item.style.display === 'block') ? 'list-item' : 'none';
+    });
 }
 
 //Deletes employee Directory
 function deleteDirectory() {
     usersDirectory = usersDirectory.filter(user => user.id !== employeeContact.id);
-    updateDirectory()
+    updateDirectory();
     employeeContact.remove();
-    getCountOfEmployee()
-    hideModal()
+    getCountOfEmployee();
+    hideModal();
     myForm.reset();
-    NoEmployeesFound()
+    NoEmployeesFound();
 }
 
 //functoin to search employee by alphabet and selected options
@@ -229,7 +228,7 @@ function hide(elementId) {
     var empList = getEmployeeCards();  //getting this employee card by class name 
  for (let i = 0; i < empList.length; i++) {
         if (empList[i].id === elementId) {
-            empList[i].style.display = 'none';
+           setDisplayNone(empList[i]);
             break;
         }
     }
@@ -240,7 +239,7 @@ function display(elementId) {
     var empList = getEmployeeCards(); //getting this employee card by class name 
     for (let i = 0; i < empList.length; i++) {
         if (empList[i].id === elementId) {
-            empList[i].style.display = 'block';
+           setDisplayBlock(empList[i]);
             break;
         }
     }
@@ -267,7 +266,6 @@ function searchUsingOptions(cont, fullName, searchBy, employee, objectId, object
                 display(objectId);
             } else {
                 hide(objectId);
-
             }
             break;
     }
@@ -281,7 +279,7 @@ function searchUsingAlphabet(cont, letter, empName, objectId) {
     let nameChar = empName.charAt(0);
     if (nameChar === compareWith) {
         count++;
-        display(objectId)
+        display(objectId);
     } else {
         hide(objectId);
     }
@@ -372,9 +370,7 @@ function confirmChange(option) {
 function editForm(boolean) {
     if (boolean) {
         enableFields();
-        boolean ? setDisplayBlock(getElement("updateButton")) : setDisplayNone(getElement("updateButton"));
-        boolean ? setDisplayNone(getElement("deleteButton")) : setDisplayBlock(getElement("deleteButton"));
-
+        setUpdateAndDeleteButtons(boolean)
         var employeeForm = getEmployee();
         var inputFields = employeeForm.querySelectorAll('input');
         inputFields.forEach(function (fileds) {
