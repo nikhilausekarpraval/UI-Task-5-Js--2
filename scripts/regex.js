@@ -2,12 +2,12 @@
 const namePattern = /^[a-zA-Z]/;
 
 //nor character allowed
- const noChar = /[^0-9]/g;
+ const numbers = /[^0-9]/g;
 
 // Validates email
- const emailregex1 = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;//This regex allows for a domain part with hyphens.
- const emailregex2 = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})$/;//This regex ensures that the top-level domain (TLD) is at least two characters long.
- const emailregex3 = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$/;//This regex combines aspects of the first two and allows for multiple subdomains.
+ const emailAllowHyphen = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;//This regex allows for a domain part with hyphens.
+ const domainMinLength2 = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})$/;//This regex ensures that the top-level domain (TLD) is at least two characters long.
+ const allowMultipleSubDomain = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$/;//This regex combines aspects of the first two and allows for multiple subdomains.
 
 // Regex for contact validation
  const zerosReg = /[1-9]/g;

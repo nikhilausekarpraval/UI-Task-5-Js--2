@@ -13,7 +13,7 @@ function getElement(element) {
 
 //function to get all form
 function getEmployee() { 
-    return getElement("myForm");
+    return getElement("addEmployeeForm");
 }
 
 //function to set content empty
@@ -50,12 +50,7 @@ function hideModal() {
 
 //function to display no contact found in directory
 function displayNoContactFound(message) {
-    element = getElement('noContactFound').innerHTML = message;
-}
-
-//function to remove text from search input 
-function clearSearch() {
-    getElement('searchEmployee').value = '';
+    getElement('noContactFound').innerHTML = message;
 }
 
 //search baed on options
@@ -70,7 +65,18 @@ function getEmployeeCards(){
 }
 
 //function to set dispaly of update and delete buttons
-function setUpdateAndDeleteButtons(boolean){
-    boolean ? setDisplayBlock(getElement("updateButton")) : setDisplayNone(getElement("updateButton"));
-    boolean ? setDisplayNone(getElement("deleteButton")) : setDisplayBlock(getElement("deleteButton"));
+function setUpdateAndDeleteButtons(isEnable){
+    if(isEnable){
+        setDisplayBlock(getElement("submitButton")) ;
+        setDisplayNone(getElement("deleteButton"));
+    }else{
+        setDisplayBlock(getElement("deleteButton"));
+        setDisplayNone(getElement("submitButton"));
+    }
+}
+
+//reloads the employees on screen
+function loadEmployees(){
+    getElement('employeeDirectorySection').innerHTML='';
+    initializeDirectorys();
 }

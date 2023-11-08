@@ -8,7 +8,7 @@ function displayError(field, message) {
   }
   
   //if validate then clear error field
-  function clearError(field) {
+ function clearError(field) {
     getElement(field + "Error").innerHTML = '';
   }
   
@@ -21,40 +21,42 @@ function displayError(field, message) {
         result++;
       }       
     }
-  
-    if(result>0)
-      return false;
-    else
-      return true;
+    if(result>0)  return false; else return true;
   }
   
   //vlaidating input fields on change
   var inputErrors = true;
-  
-  function RunTimeValidation(value, fieldName) {
+  var fname;
+
+  function employeeValidation(value, fieldName) {
     var firstName , lastName, email, mobile, office, department, skype, jobTitle;
-  
+    
     switch (fieldName) {
   
       case 'firstName':
           firstName = value;
+          if (firstName !== undefined && firstName !== '' && firstName !== 'null') {
+            fname = firstName;
+           }
+          getElement('inputPreferedName').value =firstName;
           inputErrors = !namePattern.test(firstName.trim()) ? displayError("firstName", "name can't be empty & start with number") : clearError("firstName");
           break;
 
       case 'lastName':
           lastName = value;
+          getElement('inputPreferedName').value = fname+ " "+lastName;
           inputErrors = !namePattern.test(lastName.trim()) ? displayError("lastName", "name can't be empty & start with number") : clearError("lastName");
           break;
   
       case 'email':
           email = value;
-          inputErrors = (!emailregex1.test(email.trim()) || !emailregex2.test(email.trim()) || !emailregex3.test(email.trim())) ? displayError("email", "Email format is wrong") : clearError("email");
+          inputErrors = (!emailAllowHyphen.test(email.trim()) || !domainMinLength2.test(email.trim()) || !allowMultipleSubDomain.test(email.trim())) ? displayError("email", "Email format is wrong") : clearError("email");
           break;
   
       case 'mobile':
           mobile = value.trim();
           let input1 = getElement('inputMobile');
-          input1.value = input1.value.replace(noChar, "");
+          input1.value = input1.value.replace(numbers, "");
           inputErrors = (!mob.test(mobile) || !phoneno.test(mobile) || !zerosReg.test(mobile) || mobile.trim() === "") ? displayError("mobile", "Mobile number format is wrong") : clearError("mobile");
           break;
   
@@ -70,7 +72,7 @@ function displayError(field, message) {
   
       case 'skype':
           skype = value;
-          inputErrors = (skype.trim() === "" || !emailregex1.test(skype.trim()) || !emailregex2.test(skype.trim()) || !emailregex3.test(skype.trim())) ? displayError("skype", "Please enter valid  id") : clearError("skype");
+          inputErrors = (skype.trim() === "" || !emailAllowHyphen.test(skype.trim()) || !domainMinLength2.test(skype.trim()) || !allowMultipleSubDomain.test(skype.trim())) ? displayError("skype", "Please enter valid  id") : clearError("skype");
           break;
   
      case 'jobTitle':
@@ -81,9 +83,7 @@ function displayError(field, message) {
       default:
           break;
   }
-  
-    return inputErrors;
-  }
+  }  
   
   //form is not submiited if any field is empty
   function validateField(field, value) {
@@ -96,6 +96,7 @@ function displayError(field, message) {
   var newUserData = getEmployee()
      validateField('firstName', newUserData.elements['firstName'].value);
      validateField('lastName', newUserData.elements['lastName'].value);
+     validateField('gender',newUserData.elements['inlineRadioOptions'].value)
      validateField('email', newUserData.elements['email'].value);
      validateField('mobile', newUserData.elements['mobile'].value);
      validateField('office', newUserData.elements['office'].value);

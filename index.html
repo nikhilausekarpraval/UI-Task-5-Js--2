@@ -16,96 +16,67 @@
 <body>
     <div class="px-5 py-3">
         <div id="header-section" class="d-flex justify-content-between border-bottom p-2">
-            <div id="leftNavigationSecton" class="d-flex align-items-center">
+            <div id="leftHeaderSecton" class="d-flex align-items-center">
                 <img class="brand-logo" src="./resources/images/saketa.jpg">
                 <div class="pl-3">
                     <h3 class="m-0 text-style">Employee Directory</h3>
                     <h5 class="m-0">The Ultimate People Directory Experience</h5>
                 </div>
             </div>
-            <div id="rightNavigationSection" class="d-flex justify-content-end align-items-end">
-                <h3 class="m-0 text-style">Welcome,<span class="pr-2 text-dark" id="activeUserName"> Nikhil Ausekar</span></h3>
+            <div id="rightHeaderSection" class="d-flex justify-content-end align-items-end">
+                <h3 class="m-0 text-style">Welcome,<span class="pr-2 text-dark" id="activeUserName"> Nikhil
+                        Ausekar</span></h3>
                 <img id="activeUserImg" class="pb-1" src="resources/images/profile.jpg">
             </div>
         </div>
-        <div id="body-section" class="pt-4">
+        <div id="bodySection" class="pt-4">
             <div class="pt-1 row">
-                <div id="bodyLeftSection" class="col pr-0">
+                <div id="filterLeftSection" class="col pr-0">
                     <div class="font-weight-bold mb-2">Departments</div>
-                    <ul class="list-unstyled mb-4">
-                        <li class="text-muted" onclick="findEmployeeByDepartment('department', 'IT')">IT (<span id="itCount" class="departments"></span>)</li>
-                        <li class="text-muted" onclick="findEmployeeByDepartment('department', 'Human Resources')">Human Resources (<span id="hrCount" class="departments"></span>)</li>
-                        <li class="text-muted" onclick="findEmployeeByDepartment('department', 'MD')">MD (<span id="mdCount" class="departments"></span>)</li>
-                        <li class="text-muted" onclick="findEmployeeByDepartment('department', 'Sales')">Sales (<span id="salesCount" class="departments"></span>)</li>
+                    <ul class="list-unstyled mb-4" id="departmentList">
+
                     </ul>
                     <div class="font-weight-bold mb-2">Offices</div>
-                    <ul class="list-unstyled mb-4">
-                        <li class="text-muted" onclick="findEmployeeByDepartment('office', 'Seattle')">Seattle (<span id="seattleOffice" class="offices"></span>)</li>
-                        <li class="text-muted" onclick="findEmployeeByDepartment('office', 'India')">India (<span id="indiaOffice" class="offices"></span>)</li>
+                    <ul class="list-unstyled mb-4" id="officeList">
+
                     </ul>
                     <div class="font-weight-bold mb-2">Job Titles</div>
-                    <ul class="list-unstyled mb-1" id="list">
-                        <li class="text-muted" onclick="findEmployeeByDepartment('jobTitle', 'SharePoint Practice Head')">SharePoint Practice Head (<span id="SharePointHead" class="job-titles"></span>)</li>
-                        <li class="text-muted" onclick="findEmployeeByDepartment('jobTitle', '.Net Development Lead')">.Net Development Lead (<span id=".netLead" class="job-titles"></span>)</li>
-                        <li class="text-muted" onclick="findEmployeeByDepartment('jobTitle', 'Recruiting Expert')">Recruiting Expert (<span id="recruitingExpert" class="job-titles"></span>)</li>
-                        <li class="text-muted" onclick="findEmployeeByDepartment('jobTitle', 'BI Developer')">BI Developer (<span id="biDeveloper" class="job-titles"></span>)</li>
-                        <li class="text-muted" onclick="findEmployeeByDepartment('jobTitle', 'Business Analyst')">Business Analyst (<span id="businessAnalyst" class="job-titles"></span>)</li>
-                        <li class="text-muted hidden" onclick="findEmployeeByDepartment('jobTitle', 'Full Stack Developer')">Full Stack Developer (<span id="fullStackDeveloper" class="job-titles"></span>)</li>
-                        <li class="text-muted hidden" onclick="findEmployeeByDepartment('jobTitle', 'Azure Lead')">Azure Lead (<span id="azureLead" class="job-titles"></span>)</li>
-                        <li class="text-muted hidden" onclick="findEmployeeByDepartment('jobTitle', 'React Development Lead')">React Development Lead (<span id="ReactLead" class="job-titles"></span>)</li>
+                    <ul class="list-unstyled mb-1" id="jobTitleList">
+
                     </ul>
-                    <a class="text-decoration-none" onclick="toggleHidden()">view more</a>
+                    <a class="toggle-btn" id="showMore" onclick="toggleList(true)">Show More</a>
                 </div>
                 <div id="bodyRightSection" class="col-sm-10">
                     <ul class="list-unstyled d-flex justify-content-between" id="filterByLetter">
-                        <li class="chracter-style person-image"><img id="personImage" src="/resources/person-icon.png"
-                                class="mb-1"></li>
-                        <li class="chracter-style" onclick="searchEmployee('','A')">A</li>
-                        <li class="chracter-style" onclick="searchEmployee('','B')">B</li>
-                        <li class="chracter-style" onclick="searchEmployee('','C')">C</li>
-                        <li class="chracter-style" onclick="searchEmployee('','D')">D</li>
-                        <li class="chracter-style" onclick="searchEmployee('','E')">E</li>
-                        <li class="chracter-style" onclick="searchEmployee('','F')">F</li>
-                        <li class="chracter-style" onclick="searchEmployee('','G')">G</li>
-                        <li class="chracter-style" onclick="searchEmployee('','H')">H</li>
-                        <li class="chracter-style" onclick="searchEmployee('','I')">I</li>
-                        <li class="chracter-style" onclick="searchEmployee('','J')">J</li>
-                        <li class="chracter-style" onclick="searchEmployee('','K')">K</li>
-                        <li class="chracter-style" onclick="searchEmployee('','L')">L</li>
-                        <li class="chracter-style" onclick="searchEmployee('','M')">M</li>
-                        <li class="chracter-style" onclick="searchEmployee('','N')">N</li>
-                        <li class="chracter-style" onclick="searchEmployee('','O')">O</li>
-                        <li class="chracter-style" onclick="searchEmployee('','P')">P</li>
-                        <li class="chracter-style" onclick="searchEmployee('','Q')">Q</li>
-                        <li class="chracter-style" onclick="searchEmployee('','R')">R</li>
-                        <li class="chracter-style" onclick="searchEmployee('','S')">S</li>
-                        <li class="chracter-style" onclick="searchEmployee('','T')">T</li>
-                        <li class="chracter-style" onclick="searchEmployee('','U')">U</li>
-                        <li class="chracter-style" onclick="searchEmployee('','V')">V</li>
-                        <li class="chracter-style" onclick="searchEmployee('','W')">W</li>
-                        <li class="chracter-style" onclick="searchEmployee('','X')">X</li>
-                        <li class="chracter-style" onclick="searchEmployee('','Y')">Y</li>
-                        <li class="chracter-style" onclick="searchEmployee('','Z')">Z</li>
+                        <li class="chracter-style person-image" onclick="clearSearch()"><img id="personImage"
+                                src="/resources/person-icon.png" class="mb-1"></li>
+                  
                     </ul>
                     <div class="d-flex justify-content-between">
                         <div class="">
                             <lable>Search</lable>
-                            <input class="rounded-0 input-style" id="searchEmployee" oninput="searchEmployee(this,'')" type=""
-                                placeholder="Enter any keyword">
-                            <button type="button" id="clearButton" class="rounded-0 border-0 text-white px-3 ml-4 input-style"
+                            <input class="rounded-0 input-style" id="searchEmployee" oninput="searchEmployee(this,'','')"
+                                type="" placeholder="Enter any keyword">
+                            <button type="button" id="clearButton"
+                                class="rounded-0 border-0 text-white px-3 ml-4 input-style"
                                 onclick="clearSearch()">Clear</button>
-                    
+
                             <lable class="ml-5">Filter By</lable>
-                            <select class="filter-options input-style rounded-0" id="searchOptions">
+                            <select class="filter-options input-style rounded-0" id="searchOptions"
+                                onchange="filterBySelect(this)">
                                 <option value="name" selected>Preferred Name</option>
                                 <option value="department">Preferred Department</option>
                                 <option value="office">Preferred Office</option>
-                                <option value="jobTitle">Preferred Job Title</option>
+                                <option value="jobtitle">Preferred Job Title</option>
                             </select>
                         </div>
-                        <button id="addEmployee" class="border-0 text-white input-style" data-target="#formModal" data-toggle="modal"
-                            onclick="formOptions(true)">Add Employee</button>
-                    
+
+                        <button id="addEmployee" class="border-0 text-white input-style button-style"
+                            data-target="#formModal" data-toggle="modal" onclick="formOptions(true)">Add Employee
+                        </button>
+                        <button id="addEntity" class="border-0 text-white input-style button-style"
+                            data-target="#entityModal" data-toggle="modal">Add Entity</button>
+
                     </div>
                     <div class="py-2">
                         <span class="">Note:</span><span class="text-muted"> Please use the advanced filter options to
@@ -116,16 +87,16 @@
                             aria-hidden="true">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content ml-auto mr-auto" id="form-modal">
-                                    <div class="modal-header">
+                                    <div class="modal-header p-2">
                                         <h5 class="modal-title" id="FormTitle">Add Contact</h5>
                                         <button type="button" id="cancalButton" class="close" data-dismiss="modal"
-                                            aria-label="Close" onclick="cancelUpdate(event)">
+                                            aria-label="Close" onclick="cancelUpdate()">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body py-0">
-                                        <div class="form-container px-3 py-2" id="formContainer">
-                                            <form id="myForm" class="py-1 px-2">
+                                        <div class="form-container px-3" id="formContainer">
+                                            <form id="addEmployeeForm" class="py-1 px-2">
                                                 <div class="form-section-style">
                                                     <div class="form-row mb-2">
                                                         <div class="form-group col-md-6 mb-0 pr-3">
@@ -137,7 +108,7 @@
                                                             <input type="text" name='firstName'
                                                                 class="form-control rounded-0" id="inputFirstName"
                                                                 maxlength="35" autocomplete="off"
-                                                                oninput="RunTimeValidation(this.value,'firstName')"
+                                                                oninput="employeeValidation(this.value,'firstName')"
                                                                 required>
                                                         </div>
                                                         <div class="form-group col-md-6 mb-0 pl-2">
@@ -149,9 +120,36 @@
                                                             <input type="text" name='lastName'
                                                                 class="form-control rounded-0" id="inputLastName"
                                                                 maxlength="35" autocomplete="off"
-                                                                oninput="RunTimeValidation(this.value,'lastName')"
+                                                                oninput="employeeValidation(this.value,'lastName')"
                                                                 required>
                                                         </div>
+                                                    </div>
+                                                    <div class="form-row mb-2">
+                                                        <div class="form-group col-md-6 mb-0 pr-3">
+                                                            <label class="d-inline-flex mb-0"
+                                                                for="inputPreferedName"><strong>Prefered Name</strong>
+                                                            </label>
+                                                            <input type="text" name="preferedName"
+                                                                class="form-control rounded-0" id="inputPreferedName"
+                                                                maxlength="40" autocomplete="off" disabled>
+                                                        </div>
+                                                        <div class="form-group col-md-6 mb-1 pl-2">
+                                                        <label class="d-flex mb-0 labelStyle"
+                                                            for="male"><strong>Gender</strong><div id="genderError" class="errorStyle pl-1 text-danger"></div>
+                                                        </label>
+                                                        <div class="form-check form-check-inline pt-2">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="inlineRadioOptions" id="male"
+                                                                value="Male">
+                                                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline pt-2">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="inlineRadioOptions" id="female"
+                                                                value="Female">
+                                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                                        </div>
+                                                    </div>
                                                     </div>
                                                     <div class="form-group mb-2">
                                                         <label class="d-inline-flex mb-0"
@@ -160,58 +158,67 @@
                                                         </label>
                                                         <input type="email" name="email" class="form-control rounded-0"
                                                             id="inputEmail" maxlength="40" autocomplete="off"
-                                                            oninput="RunTimeValidation(this.value,'email')" required>
+                                                            oninput="employeeValidation(this.value,'email')" required>
                                                     </div>
                                                     <div class="form-row mb-2">
                                                         <div class="form-group col-md-6 mb-0 pr-3">
                                                             <label class="d-inline-flex mb-0"
                                                                 for="inputMobile"><strong>Mobile</strong>
-                                                                <div id="mobileError"class="errorStyle pl-3 text-danger "></div>
+                                                                <div id="mobileError"
+                                                                    class="errorStyle pl-3 text-danger "></div>
                                                             </label>
                                                             <input type="text" name="mobile" maxlength="10"
                                                                 minlength="10" class="form-control rounded-0"
                                                                 id="inputMobile"
-                                                                oninput="RunTimeValidation(this.value,'mobile')"
+                                                                oninput="employeeValidation(this.value,'mobile')"
                                                                 autocomplete="off" required>
                                                         </div>
                                                         <div class="form-group col-md-6 mb-0 pl-2">
-                                                            <label class="d-inline-flex mb-0" for="inputDepartment"><strong>Department</strong>
-                                                                <div id="departmentError" class="errorStyle pl-3 text-danger"></div>
+                                                            <label class="d-inline-flex mb-0"
+                                                                for="inputDepartment"><strong>Department</strong>
+                                                                <div id="departmentError"
+                                                                    class="errorStyle pl-3 text-danger"></div>
                                                             </label>
-                                                            <select name="department" class="form-control rounded-0" id="inputDepartment" oninput="RunTimeValidation(this.value,'department')" required>
-                                                                <option value="" disabled selected>Select Department</option>
-                                                                <option value="IT">IT</option>
-                                                                <option value="Human Resources">Human Resources</option>
-                                                                <option value="MD">MD</option>
-                                                                <option value="Sales">Sales</option>
+                                                            <select name="department" class="form-control rounded-0"
+                                                                id="inputDepartment"
+                                                                oninput="employeeValidation(this.value,'department')"
+                                                                required>
+                                                                <option value="" disabled selected>Select Department
+                                                                </option>
+                                                                
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-row mb-2">
                                                         <div class="form-group col-md-6 mb-0 pr-3">
-                                                            <label class="d-inline-flex mb-0" for="inputJobTitle"><strong>Job Title</strong>
-                                                                <div id="jobTitleError" class="errorStyle pl-3 text-danger"></div>
+                                                            <label class="d-inline-flex mb-0"
+                                                                for="inputJobTitle"><strong>Job Title</strong>
+                                                                <div id="jobTitleError"
+                                                                    class="errorStyle pl-3 text-danger"></div>
                                                             </label>
-                                                            <select name="jobTitle" class="form-control rounded-0" id="inputjobTitle" oninput="RunTimeValidation(this.value,'jobTitle')" required>
-                                                                <option value="" disabled selected>Select Job Title</option>
-                                                                <option value="SharePoint Practice Head">SharePoint Practice Head</option>
-                                                                <option value=".Net Development Lead">.Net Development Lead</option>
-                                                                <option value="Recruiting Expert">Recruiting Expert</option>
-                                                                <option value="BI Developer">BI Developer</option>
-                                                                <option value="Business Analyst">Business Analyst</option>
-                                                                <option value="Full Stack Developer">Full Stack Developer</option>
-                                                                <option value="Azure Lead">Azure Lead</option>
-                                                                <option value="React Development Lead">React Development Lead</option>
+                                                            <select name="jobTitle" class="form-control rounded-0"
+                                                                id="inputjobTitle"
+                                                                oninput="employeeValidation(this.value,'jobTitle')"
+                                                                required>
+                                                                <option value="" disabled selected>Select Job Title
+                                                                </option>
+                                                                
                                                             </select>
-                                                        </div>           
+                                                        </div>
+
                                                         <div class="form-group col-md-6 mb-0 pl-2">
-                                                            <label class="d-inline-flex mb-0" for="inputOffice"><strong>Office</strong>
-                                                                <div id="officeError" class="errorStyle pl-3 text-danger"></div>
+                                                            <label class="d-inline-flex mb-0"
+                                                                for="inputOffice"><strong>Office</strong>
+                                                                <div id="officeError"
+                                                                    class="errorStyle pl-3 text-danger"></div>
                                                             </label>
-                                                            <select name="office" class="form-control rounded-0" id="inputOffice" oninput="RunTimeValidation(this.value,'office')" required>
-                                                                <option value="" disabled selected>Select Office</option>
-                                                                <option value="India">India</option>
-                                                                <option value="Seattle">Seattle</option>
+                                                            <select name="office" class="form-control rounded-0"
+                                                                id="inputOffice"
+                                                                oninput="employeeValidation(this.value,'office')"
+                                                                required>
+                                                                <option value="" disabled selected>Select Office
+                                                                </option>
+                                                                
                                                             </select>
                                                         </div>
                                                     </div>
@@ -220,65 +227,112 @@
                                                                 ID</strong>
                                                             <div id="skypeError" class="errorStyle pl-3 text-danger "></div>
                                                         </label>
-                                                        <input name="skype" class="form-control bor rounded-0 overflow-auto" id="inputSkype" maxlength="150"
-                                                            autocomplete="off" oninput="RunTimeValidation(this.value,'skype')" required>
+                                                        <input name="skype"
+                                                            class="form-control bor rounded-0 overflow-auto"
+                                                            id="inputSkype" maxlength="150" autocomplete="off"
+                                                            oninput="employeeValidation(this.value,'skype')" required>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer p-2">
                                         <button type="submit" id="submitButton" class="btn btn-primary"
                                             onclick="addEmployee(event)"><span class="px-3">Add</span></button>
-                                        <button type="button" id="updateButton" class="btn btn-primary text-white"
-                                            data-toggle="modal" data-target="#myModal" 
-                                            onclick="confirmChange('update')"><span
-                                                class="">Update</span></button>
                                         <button type="button" id="deleteButton" class="btn btn-primary text-white"
                                             data-toggle="modal" data-target="#myModal"
-                                            onclick="confirmChange('delete')"><span
-                                                class="">Delete</span></button>
-                                        <button type="button" class="btn btn-secondary px-2"
-                                            id="editButton" ></button>
+                                            onclick="confirmChange('delete')"><span class="">Delete</span></button>
+                                        <button type="button" class="btn btn-secondary px-2" id="editButton"></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="employee-directory-border" id="employeeDirectoryStyle">
-                        <h4 id="noContactFound" class="text-danger"></h4>
+                        <h4 id="noContactFound" class="text-danger m-0"></h4>
                         <div id="employeeDirectorySection" class="p-3">
-   
+
                         </div>
                     </div>
-                    <div id="popMassage">
-                        <div class="modal" id="myModal">
-                          <div class="modal-dialog-centered w-25 ml-auto mr-auto">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h4 id="modalHeding" class="modal-title">Heading</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              </div>
-                              <div class="modal-body">
-                                Select Below option
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmUpdate" onclick="updateDirecotry(event)">Update</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmDelete" onclick="deleteDirectory()">Delete</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                              </div>
+                    <div class="modal-form-section">
+                        <div class="modal fade" id="entityModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content ml-auto mr-auto" id="entityModalStyle">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Add Entity</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                            onclick="cancelUpdate()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body py-0">
+                                        <div class="form-container px-3 py-2">
+                                            <form id="entityForm" class="py-1 px-2">
+                                                <div class="form-section-style">
+                                                    <div class="form-group mb-0">
+                                                        <label class="d-inline-flex mb-0"
+                                                            for="selectEntity"><strong>Entity</strong></label>
+                                                        <select name="entity" class="form-control rounded-0"
+                                                            id="selectEntity" required>
+                                                            <option value="" disabled selected>Select Entity</option>
+                                                            <option value='department'>Department</option>
+                                                            <option value='office'>Office</option>
+                                                            <option value='jobTitle'>JobTitle</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-0">
+                                                        <label class="d-inline-flex mb-0"
+                                                            for="entityType"><strong>Select Type</strong></label>
+                                                        <select name="entityType" class="form-control rounded-0"
+                                                            id="entityType" required>
+                                                            <option value='' disabled selected>Select Type</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary"><span class="px-3"
+                                                onclick="addFilter()">Add</span></button>
+                                        <button type="button" class="btn btn-secondary px-2" data-dismiss="modal"
+                                            aria-label="close" onclick="cancelUpdate()">Cancel</button>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
+                    </div>
+                </div>
+                <div id="popMassage">
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog-centered w-25 ml-auto mr-auto">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 id="modalHeding" class="modal-title">Heading</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    Select Below option
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmUpdate"
+                                        onclick="updateEmployeeDirectory(event)">Update</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <script src="/scripts/constant.js"></script>
-        <script src="/scripts/service.js"></script>
-        <script src="/scripts/helper.js"></script>
-        <script src="/scripts/regex.js"></script>
-        <script src="/scripts/validation.js"></script>      
-        <script src="/scripts/index.js"></script>
+    </div>
+    <script src="/scripts/constant.js"></script>
+    <script src="/scripts/service.js"></script>
+    <script src="/scripts/helper.js"></script>
+    <script src="/scripts/regex.js"></script>
+    <script src="/scripts/validation.js"></script>
+    <script src="/scripts/index.js"></script>
 </body>
+
 </html>
