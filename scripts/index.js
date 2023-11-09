@@ -16,12 +16,13 @@ if (!getEntity()|| getEntity().length === 0) {
   }
   
 entityObject = getEntity();
-initializeDirectorys()
-initializeFilters()
+initializeDirectorys();
+initializeFilters();
 noEmployeePresent();
 getCountOfEmployee();
 ifListOverflow();
-createCharacterFilter()
+createAlphabetFilter();
+
 // Call the function to load all select options from localstorage
 populateOptions('inputDepartment', entityObject.departmentList);
 populateOptions('inputjobTitle', entityObject.jobTitleList);
@@ -32,7 +33,6 @@ populateOptions('inputOffice', entityObject.officeList);
 function randomString() {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 }
-
 function generateGuid() {
     return (randomString() + randomString() + "-" + randomString() + "-4" + randomString().slice(0, 3) + "-" + randomString() + "-" + randomString() + randomString() + randomString()).toLowerCase();
 }
@@ -48,15 +48,15 @@ function initializeDirectorys() {
     }
 }
 
-//function to create chracter filter list
-function createCharacterFilter(){
+//function to create Alphabet filter list to filter names by first alphabet
+function createAlphabetFilter(){
    let list= getElement('filterByLetter');
     for(var i = 65 ; i<= 90; i++){
         let item = document.createElement('li');
             item.setAttribute('class','chracter-style');
             item.setAttribute('onclick', "searchEmployee('', '" + String.fromCharCode(i) + "', this)");
             item.innerHTML=String.fromCharCode(i);
-            list.appendChild(item);
+            insertElement(list, item);
     } 
 }
 
@@ -85,7 +85,7 @@ function addEmployee(e) {
         };
 
         usersDirectory.push(formData);
-        updateDirectory()
+        updateDirectory();
         createEmployee(formData);
         getCountOfEmployee()
         noEmployeePresent();
@@ -152,7 +152,7 @@ function cancelUpdate() {
 }
 
 //function to display and hide update delete and cancel button
-function formOptions(value) {
+function formFunctions(value) {
     getElement('FormTitle').innerHTML = value ? "Add Contact" : "Edit Contact";
     setUpdateAndDeleteButtons(true);
     toogleEditButton(!value);
@@ -180,7 +180,7 @@ function activeEmployee(employee) {
 //display employee data in form
 function showDirectory(empContact) {
     setInnerHtmlEmpty(getByClassName('errorStyle'));
-    formOptions(false);
+    formFunctions(false);
     let newUserData = getEmployee();
     newUserData.elements['firstName'].value = empContact.firstName;
     newUserData.elements['lastName'].value = empContact.lastName;
@@ -283,13 +283,13 @@ function populateOptions(selectId, list) {
     defaultOption.text = 'Select ' + selectId.charAt(5).toLowerCase() + selectId.slice(6);
     defaultOption.disabled = true;
     defaultOption.selected = true;
-    selectElement.appendChild(defaultOption);
+    insertElement(selectElement, defaultOption);
 
     for (var i = 0; i < list.length; i++) {
         var option = document.createElement('option');
         option.value = list[i];
         option.text = list[i];
-        selectElement.appendChild(option);
+        insertElement(selectElement, option);
     }
 }
 
@@ -300,7 +300,7 @@ function searchEmployee(input, letter,isElement) {
     // input is search based on input entered value
 
     if(typeof(isElement) !== 'string'){
-        setActive(isElement,'chracter');
+        highlightFilter(isElement,'chracter');
     }
 
     var searchBy = getSearchOption();
@@ -316,15 +316,15 @@ function clearEmployee(){
 }
 
 
-//function to search employee using selected search option
-function searchUsingOptions(cont, searchBy, employee) {
+//function to search employee using Name , office, job title and department
+function searchUsingOptions(cont, searchBy, input) {
 
     let filter
-    if(typeof(employee) === 'string'){
-        filter = employee.toLowerCase();
+    if(typeof(input) === 'string'){
+        filter = input.toLowerCase();
     }else{
-            filter = employee.value.toLowerCase();
-    }
+            filter = input.value.toLowerCase();
+    } 
     
     let count = cont;
 
@@ -422,10 +422,10 @@ function isEmployee(){
     }
 }
 
-//function set active filter background
-function setActive(activeFilter ,isString){
+//function to highlight clicked filter background
+function highlightFilter(activeFilter ,isString){
 
-        var list;
+    var list;
     if(isString ===''){
          list= getElement('filterLeftSection').querySelectorAll('li');
     }else{
@@ -436,8 +436,8 @@ function setActive(activeFilter ,isString){
             li.style.backgroundColor='';
             li.style.color='';
         }
-        hasEmployee = activeFilter.querySelector('span');
 
+        hasEmployee = activeFilter.querySelector('span');
         activeFilter.style.backgroundColor='lightGray';
         activeFilter.style.color='white';
 }
@@ -451,7 +451,7 @@ function findEmployeeByDepartment(department, subDepartment, activeFilter) {
 
    count <= 0 ? displayNoContactFound('No employee found..!!') : displayNoContactFound('');
 
-   setActive(activeFilter,''); // set current filter background color and also used to find if no employee present display no employee warning
+   highlightFilter(activeFilter,''); // set current filter background color and also used to find if no employee present display no employee warning
 
 }
 
@@ -488,7 +488,6 @@ function toggleButtonAttribute(isValid){
         button.setAttribute('onclick','confirmChange("delete")');
         button.innerHTML='Delete'
     }
-     
 }
 
 //enables form filed to be edited
@@ -540,41 +539,40 @@ function enableSelect() {
 function filterBySelect(selected){
     clearEmployee();
     var sortedArray = usersDirectory;
-
     filterBy = selected.value; // value of selected may be department, office or jobTitle or firstName
 
     sortedArray.sort((a, b) => {
-        var fieldA
-        var fieldB
+        var firstEmployee 
+        var secondEmployee
         switch(filterBy){
             case 'name':
-             fieldA = a.firstName.toLowerCase();
-             fieldB = b.firstName.toLowerCase();
+             firstEmployee = a.firstName.toLowerCase();
+             secondEmployee = b.firstName.toLowerCase();
              break;
 
              case 'office':
-                fieldA = a.office.toLowerCase();
-                fieldB = b.office.toLowerCase();
-                break;
+             firstEmployee = a.office.toLowerCase();
+             secondEmployee = b.office.toLowerCase();
+              break;
             
              case 'jobTitle':
-             fieldA = a.jobTitle.toLowerCase();
-             fieldB = b.jobTitle.toLowerCase();
+             firstEmployee = a.jobTitle.toLowerCase();
+             secondEmployee = b.jobTitle.toLowerCase();
              break;
 
              case 'department':
-             fieldA = a.department.toLowerCase();
-             fieldB = b.department.toLowerCase();
+             firstEmployee = a.department.toLowerCase();
+             secondEmployee = b.department.toLowerCase();
              break;
         }
 
-        if (fieldA < fieldB) return -1;
-        if (fieldA > fieldB) return 1;
+        if (firstEmployee < secondEmployee) return -1;
+        if (firstEmployee > secondEmployee) return 1;
         return 0;
       });
 
-      sortedArray.forEach(element => {
-        createEmployee(element);
+      sortedArray.forEach(employee => {
+        createEmployee(employee);
       });
 }   
       
@@ -590,7 +588,7 @@ function filterBySelect(selected){
             var option = document.createElement('option');
             option.value = value;
             option.text = value;
-            entityTypeSelect.appendChild(option);
+            insertElement(entityTypeSelect, option);
         });
     });
 

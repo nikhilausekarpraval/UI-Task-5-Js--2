@@ -16,14 +16,14 @@
 <body>
     <div class="px-5 py-3">
         <div id="header-section" class="d-flex justify-content-between border-bottom p-2">
-            <div id="leftHeaderSecton" class="d-flex align-items-center">
+            <div class="d-flex align-items-center">
                 <img class="brand-logo" src="./resources/images/saketa.jpg">
                 <div class="pl-3">
                     <h3 class="m-0 text-style">Employee Directory</h3>
                     <h5 class="m-0">The Ultimate People Directory Experience</h5>
                 </div>
             </div>
-            <div id="rightHeaderSection" class="d-flex justify-content-end align-items-end">
+            <div class="d-flex justify-content-end align-items-end">
                 <h3 class="m-0 text-style">Welcome,<span class="pr-2 text-dark" id="activeUserName"> Nikhil
                         Ausekar</span></h3>
                 <img id="activeUserImg" class="pb-1" src="resources/images/profile.jpg">
@@ -46,7 +46,7 @@
                     </ul>
                     <a class="toggle-btn" id="showMore" onclick="toggleList(true)">Show More</a>
                 </div>
-                <div id="bodyRightSection" class="col-sm-10">
+                <div class="col-sm-10 body-content">
                     <ul class="list-unstyled d-flex justify-content-between" id="filterByLetter">
                         <li class="chracter-style person-image" onclick="clearSearch()"><img id="personImage"
                                 src="/resources/person-icon.png" class="mb-1"></li>
@@ -72,7 +72,7 @@
                         </div>
 
                         <button id="addEmployee" class="border-0 text-white input-style button-style"
-                            data-target="#formModal" data-toggle="modal" onclick="formOptions(true)">Add Employee
+                            data-target="#formModal" data-toggle="modal" onclick="formFunctions(true)">Add Employee
                         </button>
                         <button id="addEntity" class="border-0 text-white input-style button-style"
                             data-target="#entityModal" data-toggle="modal">Add Entity</button>

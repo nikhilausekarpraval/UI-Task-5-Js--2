@@ -28,19 +28,9 @@ function getByClassName(elment) {
     return document.getElementsByClassName(elment);
 }
 
-//function to retive the current user data in right section
-function getUserAddress() {
-    return document.querySelectorAll('#userDataList .user-full-address');
-}
-
 //function to insert element inside the element
 function insertElement(element, data) {
     element.appendChild(data);
-}
-
-//function to delete the user data in Right user data section
-function removeUser() {
-    setInnerHtmlEmpty(getUserAddress());
 }
 
 //function to hide the modal when we click on cancal or delete submit
@@ -53,7 +43,7 @@ function displayNoContactFound(message) {
     getElement('noContactFound').innerHTML = message;
 }
 
-//search baed on options
+//search based on options
 function getSearchOption() {
     var selectBox = getElement('searchOptions')//gettting this option by getElemetnby id 
     return selectBox.value;
