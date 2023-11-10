@@ -23,6 +23,36 @@ getCountOfEmployee();
 ifListOverflow();
 createAlphabetFilter();
 
+randomImage()
+
+function randomImage() {
+    getElement('employeeDirectorySection').style.display = 'none';
+
+    allImages = getElement('employeeDirectorySection').querySelectorAll('img');
+
+    let loadedImages = 0;
+
+    allImages.forEach(function (item) {
+        fetch('https://source.unsplash.com/featured/?person')
+            .then(response => response.url)
+            .then(url => {
+                item.src = url;
+                loadedImages++;
+
+                if (loadedImages === allImages.length) {
+                    showPage();
+                }
+            });
+    });
+}
+
+function showPage() {
+    getElement('employeeDirectorySection').style.display = 'grid';
+    setDisplayNone(getElement('loadingAnimation'));
+}
+
+
+
 // Call the function to load all select options from localstorage
 populateOptions('inputDepartment', entityObject.departmentList);
 populateOptions('inputjobTitle', entityObject.jobTitleList);
@@ -113,7 +143,7 @@ function createEmployee(formData) {
     leftCol.setAttribute('class', 'col col-sm-4 pl-0 pr-0');
     var img = document.createElement('img');
     img.setAttribute('class', 'employee-image');
-    img.setAttribute('src', '/resources/images/profile.jpg');
+    img.setAttribute('src', '');
 
     insertElement(leftCol, img);
     insertElement(row, leftCol);
@@ -669,5 +699,11 @@ function resetFilters() {
         li.style.color = '';
     }
 }
+
+
+
+        
+  
+
 
 

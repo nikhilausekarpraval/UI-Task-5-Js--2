@@ -48,7 +48,7 @@
 
 .employee-image{
     width: 64px;
-    height: auto;
+    height: 64px;
 }
 
 #searchEmployee {
@@ -145,4 +145,12 @@ cursor: pointer;
 
 .labelStyle{
     height: fit-content;
+}
+
+#loadingAnimation {
+    position:absolute;
+    top:60%;
+    left: 45%;
+    z-index: 3; 
+    background-color: #f0f0f0; 
 }
