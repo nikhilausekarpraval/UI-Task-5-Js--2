@@ -54,7 +54,7 @@
 #searchEmployee {
     border: 1px solid #555;
     padding-left:35px;
-    background: transparent url("/resources/images/search-icon.png") no-repeat;
+    background: transparent url("\resources\images\search-icon.png") no-repeat;
     background-size:10%;
     background-position-y: 5px;
     background-position-x: 5px;

@@ -8,7 +8,8 @@ var hasEmployee;            // storing count of acive filter employee
 var entityObject = {
     departmentList:['IT','Human Resources','MD'],
     officeList:['Seattle','India'],
-    jobTitleList:['SharePoint Practice Head','.Net Development Lead','Recruiting Expert','BI Developer','Business Analyst','Full Stack Developer','Azure Lead','React Development Lead']
+    jobTitleList:['SharePoint Practice Head','.Net Development Lead','Recruiting Expert','BI Developer','Business Analyst','Full Stack Developer','Azure Lead','React Development Lead'],
+    policyList:["UserPolicy"]
 };
 
 if (!getEntity()|| getEntity().length === 0) {
