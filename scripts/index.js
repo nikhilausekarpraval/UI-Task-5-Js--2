@@ -52,8 +52,6 @@ function showPage() {
     setDisplayNone(getElement('loadingAnimation'));
 }
 
-
-
 // Call the function to load all select options from localstorage
 populateOptions('inputDepartment', entityObject.departmentList);
 populateOptions('inputjobTitle', entityObject.jobTitleList);
@@ -76,6 +74,7 @@ function initializeDirectorys() {
         for (var i = 0; i < usersDirectory.length; i++) {
             createEmployee(usersDirectory[i]);
         }
+        randomImage() ;
     }
 }
 
@@ -119,13 +118,15 @@ function addEmployee(e) {
             department: newUserData.elements['department'].value,
             skype: newUserData.elements['skype'].value
         };
-
+        
         usersDirectory.push(formData);
         updateDirectory();
         createEmployee(formData);
         getCountOfEmployee()
         noEmployeePresent();
         hideModal();
+        setDisplayBlock(getElement('loadingAnimation'));
+        randomImage();
         getEmployee().reset();
     }
 }
@@ -335,7 +336,7 @@ function populateOptions(selectId, list) {
 function searchEmployee(input, letter, isElement) {
 
     if (typeof (isElement) !== 'string') {
-        highlightFilter(isElement, 'chracter');
+        highlightFilterCharacter(isElement, 'chracter');
     }
 
     var searchBy = getSearchOption();
@@ -461,7 +462,7 @@ function isEmployee() {
 }
 
 //function to highlight clicked filter background
-function highlightFilter(activeFilter, isString) {
+function highlightFilterCharacter(activeFilter, isString) {
 
     var list;
     if (isString === '') {
@@ -478,6 +479,27 @@ function highlightFilter(activeFilter, isString) {
     activeFilter.style.backgroundColor = 'lightGray';
     activeFilter.style.color='white';
 }
+
+//function to highlight clicked filter background
+function highlightFilter(activeFilter, isString) {
+
+    var list;
+    if (isString === '') {
+        list = getElement('filterLeftSection').querySelectorAll('li');
+    } else {
+        list = getElement('filterByLetter').querySelectorAll('li');
+    }
+
+    for (let li of list) {
+        li.style.color = '';
+        li.style.backgroundColor='';
+    }
+
+    hasEmployee = activeFilter.querySelector('span');
+    activeFilter.style.backgroundColor = 'lightGray';
+    activeFilter.style.color='white';
+}
+
 
 //filtering the employees based on jobTtitle , office and department
 function findEmployeeByDepartment(department, subDepartment, activeFilter) {
@@ -498,7 +520,9 @@ function clearSearch() {
     clearEmployee();
     getElement('noContactFound').innerHTML = ''
     resetFilters()
+    setDisplayBlock(getElement('loadingAnimation'));
     initializeDirectorys();
+    
 }
 
 //disabling and hiding delete update buttons in modal pop-up
