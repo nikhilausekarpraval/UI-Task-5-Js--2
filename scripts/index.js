@@ -23,8 +23,8 @@ noEmployeePresent();
 getCountOfEmployee();
 ifListOverflow();
 createAlphabetFilter();
-
-randomImage()
+randomImage();
+displayModal();
 
 function randomImage() {
     getElement('employeeDirectorySection').style.display = 'none';
@@ -129,6 +129,14 @@ function addEmployee(e) {
         randomImage();
         getEmployee().reset();
     }
+}
+
+// when user login 
+function handleLogin(event) {
+    event.preventDefault();
+    let username = document.getElementById('login').value;
+    getElement("activeUserName").innerHTML = username;
+    $('#loginModal').modal('hide');
 }
 
 // cretes employee card with all information taken from form.

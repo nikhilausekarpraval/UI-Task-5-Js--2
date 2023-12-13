@@ -17,7 +17,7 @@
     <div class="px-5 py-3">
         <div id="header-section" class="d-flex justify-content-between border-bottom p-2">
             <div class="d-flex align-items-center">
-                <img class="brand-logo" src=".\resources\images\saketa.jpg">
+                <img class="brand-logo" src="https://pravaltech.com/wp-content/uploads/2023/06/PRAVAL-LOGO-300x77.png">
                 <div class="pl-3">
                     <h3 class="m-0 text-style">Employee Directory</h3>
                     <h5 class="m-0">The Ultimate People Directory Experience</h5>
@@ -70,7 +70,7 @@
                             <select class="filter-options input-style rounded-0" id="searchOptions"
                                 onchange="filterBySelect(this)">
                                 <option selected>Options</option>
-                                <option value="name" >Preferred Name</option>
+                                <option value="name">Preferred Name</option>
                                 <option value="department">Preferred Department</option>
                                 <option value="office">Preferred Office</option>
                                 <option value="jobtitle">Preferred Job Title</option>
@@ -161,8 +161,9 @@
                                                             </div>
                                                             <div class="form-check form-check-inline pt-2">
                                                                 <input class="form-check-input" type="radio"
-                                                                     value="Other" name="inlineRadioOptions"
-                                                                    oninput="employeeValidation(this.value,'gender')" readonly>
+                                                                    value="Other" name="inlineRadioOptions"
+                                                                    oninput="employeeValidation(this.value,'gender')"
+                                                                    readonly>
                                                                 <label class="form-check-label"
                                                                     for="inlineRadio2">Other</label>
                                                             </div>
@@ -214,7 +215,8 @@
                                                                 <div id="jobTitleError"
                                                                     class="errorStyle pl-3 text-danger"></div>
                                                             </label>
-                                                            <select name="jobTitle" class="form-control form-control-style rounded-0"
+                                                            <select name="jobTitle"
+                                                                class="form-control form-control-style rounded-0"
                                                                 id="inputjobTitle"
                                                                 oninput="employeeValidation(this.value,'jobTitle')"
                                                                 required>
@@ -362,29 +364,56 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="popMassage">
-                    <div class="modal" id="myModal">
-                        <div class="modal-dialog-centered w-25 ml-auto mr-auto">
-                            <div class="modal-content">
+                    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content border-0">
                                 <div class="modal-header">
-                                    <h4 id="modalHeding" class="modal-title">Heading</h4>
+                                    <h4 id="modalHeding" class="modal-title">Start You Test After Login</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
-                                <div class="modal-body">
-                                    Select Below option
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmUpdate"
-                                        onclick="updateEmployeeDirectory(event)">Update</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <div class="modal-body py-0 d-flex justify-content-center">
+                                    <div class="add-employee-form pt-1 pb-4 px-5" id="addEmpoyeeSection">
+                                        <form>
+                                            <div class="form-group">
+                                                <input type="text" id="login" class="form-control fadeIn second m-2" name="login" placeholder="Enter Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" id="password" class="form-control fadeIn third m-2" name="password"
+                                                    placeholder="Password">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="button"  onclick="handleLogin(event)" class="rounded border-0 px-2 py-1 text-light fourth d-block mx-auto button-style" value="Log In">
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div id="popMassage">
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog-centered w-25 ml-auto mr-auto">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 id="modalHeding" class="modal-title">Heading</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                Select Below option
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" id="confirmUpdate"
+                                    onclick="updateEmployeeDirectory(event)">Update</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
     </div>
     <script src="scripts\constant.js"></script>
     <script src="scripts\service.js"></script>

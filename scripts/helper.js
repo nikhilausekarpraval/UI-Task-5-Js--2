@@ -38,6 +38,11 @@ function hideModal() {
     $('#formModal').modal('hide');
 }
 
+//fucntion to display model
+function displayModal() {
+    $('#loginModal').modal('show');
+}
+
 //function to display no contact found in directory
 function displayNoContactFound(message) {
     getElement('noContactFound').innerHTML = message;

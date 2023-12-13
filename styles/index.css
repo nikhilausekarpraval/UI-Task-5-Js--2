@@ -1,5 +1,5 @@
 .brand-logo{
-    width: 18%;
+    width: 24%;
     height: auto;
 }
 #activeUserImg{
@@ -12,7 +12,7 @@
 }
 
 .text-style{
-    color: rgb(52, 187, 253);
+    color: rgb(15, 114, 177);
 }
 .chracter-style{
      width: 33px;
@@ -20,7 +20,7 @@
      display: flex;
      justify-content: center;
      align-items: center;
-     background: rgb(0, 177, 252);
+     background: rgb(15, 114, 177);
      color:white;
 }
 
@@ -40,10 +40,7 @@
 
 
 .button-style{
-    background-color: rgb(0, 176, 252);
-}
-.person-image{
-    background-color: rgb(0, 176, 252);
+    background-color: rgb(15, 114, 177);
 }
 
 .employee-image{
