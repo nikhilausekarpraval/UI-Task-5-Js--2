@@ -530,6 +530,8 @@ function clearSearch() {
     resetFilters()
     if(usersDirectory.length !== 0){
         setDisplayBlock(getElement('loadingAnimation'));
+    }else{
+        setDisplayNone(getElement('loadingAnimation'));
     }
     initializeDirectorys();
     
