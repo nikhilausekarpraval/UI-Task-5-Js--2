@@ -46,7 +46,7 @@
                     </ul>
                     <div class="font-weight-bold mb-2">Policy</div>
                     <ul class="list-unstyled mb-1" id="policyList">
-                        <li data-target="#policyModal" data-toggle="modal" onclick="showUserPolicy()">User Policy</li>
+                        <li data-target="#policyModal" data-toggle="modal" onclick="showUserPolicy()">User Policee</li>
                     </ul>
                     <a class="toggle-btn" id="showMore" onclick="toggleList(true)">Show More</a>
                 </div>
@@ -60,21 +60,23 @@
                         <div class="">
                             <lable>Search</lable>
                             <input class="rounded-0 input-style" id="searchEmployee"
-                                oninput="searchEmployee(this,'','')" type="" placeholder="Enter any keyword">
+                                oninput="searchEmployee(this,'','')" type="" placeholder="Enter, any keyword">
                             <button type="button" id="clearButton"
                                 class="rounded-0 border-0 text-white px-3 ml-4 input-style"
                                 onclick="clearSearch()">Clear</button>
 
                             <lable class="ml-5">Filter By</lable>
+
                             <select class="filter-options input-style rounded-0" id="searchOptions"
                                 onchange="filterBySelect(this)">
-                                <option value="name" selected>Preferred Name</option>
+                                <option selected>Options</option>
+                                <option value="name" >Preferred Name</option>
                                 <option value="department">Preferred Department</option>
                                 <option value="office">Preferred Office</option>
                                 <option value="jobtitle">Preferred Job Title</option>
                             </select>
-                        </div>
 
+                        </div>
                         <button id="addEmployee" class="border-0 text-white input-style button-style"
                             data-target="#formModal" data-toggle="modal" onclick="formFunctions(true)">Add Employee
                         </button>
@@ -116,8 +118,8 @@
                                                                 required>
                                                         </div>
                                                         <div class="form-group col-md-6 mb-0 pl-2">
-                                                            <label class="d-inline-flex mb-0"
-                                                                for="inputLastName"><strong>Last Name</strong>
+                                                            <label class="d-inline-flex mb-0" for="inputLastName">Last
+                                                                Name
                                                                 <div id="lastNameError"
                                                                     class="errorStyle pl-1 text-danger"></div>
                                                             </label>
@@ -145,16 +147,24 @@
                                                             </label>
                                                             <div class="form-check form-check-inline pt-2">
                                                                 <input class="form-check-input" type="radio"
-                                                                    name="inlineRadioOptions" id="male" value="Male">
+                                                                    name="inlineRadioOptions" id="male" value="Male"
+                                                                    oninput="employeeValidation(this.value,'gender')">
                                                                 <label class="form-check-label"
                                                                     for="inlineRadio1">Male</label>
                                                             </div>
                                                             <div class="form-check form-check-inline pt-2">
                                                                 <input class="form-check-input" type="radio"
-                                                                    name="inlineRadioOptions" id="female"
-                                                                    value="Female">
+                                                                    name="inlineRadioOptions" id="female" value="Female"
+                                                                    oninput="employeeValidation(this.value,'gender')">
                                                                 <label class="form-check-label"
                                                                     for="inlineRadio2">Female</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline pt-2">
+                                                                <input class="form-check-input" type="radio"
+                                                                     value="Other" name="inlineRadioOptions"
+                                                                    oninput="employeeValidation(this.value,'gender')" readonly>
+                                                                <label class="form-check-label"
+                                                                    for="inlineRadio2">Other</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -204,7 +214,7 @@
                                                                 <div id="jobTitleError"
                                                                     class="errorStyle pl-3 text-danger"></div>
                                                             </label>
-                                                            <select name="jobTitle" class="form-control rounded-0"
+                                                            <select name="jobTitle" class="form-control form-control-style rounded-0"
                                                                 id="inputjobTitle"
                                                                 oninput="employeeValidation(this.value,'jobTitle')"
                                                                 required>
@@ -261,14 +271,33 @@
                         <div class="modal-dialog modal-xl">
                             <div class="modal-content border-0">
                                 <button type="button" id="cancalButton" class="close" data-dismiss="modal"
-                                            aria-label="Close" onclick="cancelUpdate()">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                    aria-label="Close" onclick="cancelUpdate()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                                 <div class="modal-body py-0 d-flex justify-content-center">
                                     <div class="add-employee-form pt-1 pb-4 px-5" id="addEmpoyeeSection">
-                                        <div class="policy-information">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</div>
+                                        <div class="policy-information">
+                                            <p>We work with any customer at any phase of business or software product
+                                                development — from startups
+                                                at the ideation stage to mid-sized businesses and large enterprises with
+                                                a focus on optimization and
+                                                expansion no matter the industry they operate in. Praval's custom
+                                                application developement services
+                                                enhances user experience and fuels business growth through strategic
+                                                partnership and custom digital solutions.
+                                            </p>
+                                            <p>Your traditional system may have served,, you well and gotten you where
+                                                you are today. Like everything in life it has
+                                                it’s expiry. Outdated systems significantly restrict your ability to
+                                                scale or worse keep up with your new gen competitors.
+                                                we can help modernize you products or enterprise apps in phased maner
+                                                without disrupting your current business operations.
+                                            </p>
+                                            <p>For more details click on <span class="text-primary"><u>Terms and
+                                                        conditions.</u></span></p>
+                                        </div>
                                         <button class=" px-3 m-1 rounded bg-white form-font-style cancel-button "
-                                            type="button" onclick="cancel()" data-dismiss="modal">Cancel</button>
+                                            type="button">Cancel</button>
                                     </div>
                                 </div>
                             </div>
@@ -357,13 +386,6 @@
             </div>
         </div>
     </div>
-    <!-- <script src="/scripts/constant.js"></script>
-    <script src="/scripts/service.js"></script>
-    <script src="/scripts/helper.js"></script>
-    <script src="/scripts/regex.js"></script>
-    <script src="/scripts/validation.js"></script> -->
-    <!-- <script src="/scripts/index.js"></script> -->
-
     <script src="scripts\constant.js"></script>
     <script src="scripts\service.js"></script>
     <script src="scripts\helper.js"></script>

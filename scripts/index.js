@@ -1,21 +1,21 @@
 
 var usersDirectory = [];    // array to store all users objects 
-var filteredEmployee=[]     //storing filted employee to display
+var filteredEmployee = []     //storing filted employee to display
 var activeDirectory;       //stores object of active employee
 var employeeContact;        //stores id of active employee
 var hasEmployee;            // storing count of acive filter employee
 
 var entityObject = {
-    departmentList:['IT','Human Resources','MD'],
-    officeList:['Seattle','India'],
-    jobTitleList:['SharePoint Practice Head','.Net Development Lead','Recruiting Expert','BI Developer','Business Analyst','Full Stack Developer','Azure Lead','React Development Lead'],
-    policyList:["UserPolicy"]
+    departmentList: ['IT', 'Human Resources', 'MD'],
+    officeList: ['Seattle', 'India'],
+    jobTitleList: ['SharePoint Practice Head', '.Net Development Lead', 'Recruiting Expert','Recruiting Expert', 'BI Developer', 'Business Analyst', 'Full Stack Developer', 'Azure Lead', 'React Development Lead'],
+    policyList: ["UserPolicy"]
 };
 
-if (!getEntity()|| getEntity().length === 0) {
+if (!getEntity() || getEntity().length === 0) {
     updateEntity();
-  }
-  
+}
+
 entityObject = getEntity();
 initializeDirectorys();
 initializeFilters();
@@ -80,22 +80,27 @@ function initializeDirectorys() {
 }
 
 //function to create Alphabet filter list to filter names by first alphabet
-function createAlphabetFilter(){
-   let list= getElement('filterByLetter');
-    for(var i = 65 ; i<= 90; i++){
+function createAlphabetFilter() {
+    let list = getElement('filterByLetter');
+    for (var i = 65; i <= 90; i++) {
         let item = document.createElement('li');
-            item.setAttribute('class','chracter-style');
-            item.setAttribute('onclick', "searchEmployee('', '" + String.fromCharCode(i) + "', this)");
-            item.innerHTML=String.fromCharCode(i);
-            insertElement(list, item);
-    } 
+        item.setAttribute('class', 'chracter-style');
+        item.setAttribute('onclick', "searchEmployee('', '" + String.fromCharCode(i) + "', this)");
+        item.innerHTML = String.fromCharCode(i);
+        insertElement(list, item);
+    }
 }
 
 //function to display warning if employees not present
 function noEmployeePresent() {
-    usersDirectory.length == 0 ? displayNoContactFound('No employee present') : displayNoContactFound('');
-}
 
+    if (usersDirectory.length == 0) {
+        displayNoContactFound('No employee present');
+        setDisplayNone(getElement('loadingAnimation'));
+    } else {
+        displayNoContactFound('');
+    }
+}
 //takes data from form create object of employee and append it to usersDirectory array
 function addEmployee(e) {
     e.preventDefault();
@@ -170,7 +175,7 @@ function createEmployee(formData) {
     insertElement(rightCol, department);
 
     var icons = document.createElement('div');
-    icons.innerHTML = '<i class="bi bi-telephone-fill icon-color"> </i> <i class="bi bi-envelope-fill icon-color"> </i> <i class="bi bi-chat-fill icon-color"> </i> <i class="bi bi-star-fill icon-color"> </i> <i class="bi bi-suit-heart-fill icon-color"> </i> ';
+    icons.innerHTML = '<i class="bi bi-telephone-fill icon-color"> </i> <i class="bi bi-envelope-fill icon-color"> </i> <i class="bi bi-chat-fill icon-color"> </i> <i style = "font-size:15px" class="bi bi-star-fill icon-color"> </i> <i class="bi bi-suit-heart-fill icon-color"> </i> ';
     insertElement(rightCol, icons);
     insertElement(getElement('employeeDirectorySection'), id);
 }
@@ -200,7 +205,7 @@ function activeEmployee(employee) {
             user = usersDirectory[i];
             break;
         }
-    } 
+    }
     readOnly();
     disableSelect();
     showDirectory(user);
@@ -215,7 +220,7 @@ function showDirectory(empContact) {
     let newUserData = getEmployee();
     newUserData.elements['firstName'].value = empContact.firstName;
     newUserData.elements['lastName'].value = empContact.lastName;
-    newUserData.elements['preferedName'].value=empContact.firstName +" "+ empContact.lastName;
+    newUserData.elements['preferedName'].value = empContact.firstName + " " + empContact.lastName;
     newUserData.elements['inlineRadioOptions'].value = empContact.gender;
     newUserData.elements['email'].value = empContact.email;
     newUserData.elements['mobile'].value = empContact.mobile;
@@ -255,42 +260,42 @@ function updateEmployeeDirectory() {
 }
 
 //function to hide and show jobTitle options  make list dynamic and count for list item
-function ifListOverflow(){
-      var jobTitleList =  getElement('jobTitleList').querySelectorAll('li');
-           if(jobTitleList.length >=5){
-                hideList();
-       }
+function ifListOverflow() {
+    var jobTitleList = getElement('jobTitleList').querySelectorAll('li');
+    if (jobTitleList.length >= 5) {
+        hideList();
+    }
 }
 
-var toogle =true;
+var toogle = true;
 //toogle show more and show less link
-function toggleList(isValid){
-    
-        if(toogle){
-            getElement('showMore').innerHTML='Show less';
-            showList();
-        }else{
-            getElement('showMore').innerHTML='Show more';
-            hideList();
-        }
+function toggleList(isValid) {
+
+    if (toogle) {
+        getElement('showMore').innerHTML = 'Show less';
+        showList();
+    } else {
+        getElement('showMore').innerHTML = 'Show more';
+        hideList();
+    }
 }
 
 // function to display overflowing list
-function showList(){
-    var jobTitleList =  getElement('jobTitleList').querySelectorAll('li');
-    for(let i =5; i<jobTitleList.length ;i++){
-    setDisplayBlock(jobTitleList[i]);
-        toogle =false;
-    }      
+function showList() {
+    var jobTitleList = getElement('jobTitleList').querySelectorAll('li');
+    for (let i = 5; i < jobTitleList.length; i++) {
+        setDisplayBlock(jobTitleList[i]);
+        toogle = false;
+    }
 }
 
 //function to hide  overflowing list
-function hideList(){
-    var jobTitleList =  getElement('jobTitleList').querySelectorAll('li');
-    for(let i =5; i<jobTitleList.length ;i++){
+function hideList() {
+    var jobTitleList = getElement('jobTitleList').querySelectorAll('li');
+    for (let i = 5; i < jobTitleList.length; i++) {
         setDisplayNone(jobTitleList[i]);
     }
-    toogle =true;
+    toogle = true;
 }
 
 //Deletes employee Directory
@@ -325,25 +330,25 @@ function populateOptions(selectId, list) {
 }
 
 //functoin to search employee by alphabet and selected options
-function searchEmployee(input, letter,isElement) {
+//letter is value for searching letters
+// input is search based on input entered value
+function searchEmployee(input, letter, isElement) {
 
-    //letter is value for searching letters
-    // input is search based on input entered value
-
-    if(typeof(isElement) !== 'string'){
-        highlightFilter(isElement,'chracter');
+    if (typeof (isElement) !== 'string') {
+        highlightFilter(isElement, 'chracter');
     }
 
     var searchBy = getSearchOption();
     var count = 0;
     letter === '' ? count = searchUsingOptions(count, searchBy, input) : count = searchUsingAlphabet(letter);
+    randomImage();// fixed but here 
     count <= 0 ? displayNoContactFound('No employee found..!!') : displayNoContactFound('');
 
 }
 
 //remove existing employee from screen
-function clearEmployee(){
-    getElement('employeeDirectorySection').innerHTML=''
+function clearEmployee() {
+    getElement('employeeDirectorySection').innerHTML = ''
 }
 
 
@@ -351,19 +356,19 @@ function clearEmployee(){
 function searchUsingOptions(cont, searchBy, input) {
 
     let filter
-    if(typeof(input) === 'string'){
+    if (typeof (input) === 'string') {
         filter = input.toLowerCase();
-    }else{
-            filter = input.value.toLowerCase();
-    } 
-    
+    } else {
+        filter = input.value.toLowerCase();
+    }
+
     let count = cont;
 
     switch (searchBy) {
         case 'name':
             clearEmployee();
             filteredEmployee = usersDirectory.filter(user => user.firstName.toLowerCase().indexOf(filter) > -1)
-           count= showFilteredEmployee(filteredEmployee); 
+            count = showFilteredEmployee(filteredEmployee);
             break;
 
         case 'department':
@@ -396,13 +401,13 @@ function searchUsingAlphabet(letter) {
     clearEmployee();
     filteredEmployee = usersDirectory.filter(user => user.firstName.charAt(0).toLowerCase() === letter.toLowerCase())
     return showFilteredEmployee(filteredEmployee);
- 
+
 };
 
 
 //function to show filted employee
-function showFilteredEmployee(employee){
-    for(let emp of employee){
+function showFilteredEmployee(employee) {
+    for (let emp of employee) {
         createEmployee(emp);
     }
 
@@ -422,9 +427,10 @@ function getCountOfEmployee() {
 
     for (let i = 0; i < entityObject.jobTitleList.length; i++) {
         jobTitlesCount[i] = usersDirectory.filter(user => user.jobTitle.toLowerCase() === jobTitles[i].toLowerCase());
+        
     }
 
-     displayDepartmentCount();
+    displayDepartmentCount();
 }
 
 //display the current count of employees based on department , office and jobTitle
@@ -443,46 +449,46 @@ function displayDepartmentCount() {
     let jobTitles = getByClassName('jobTitle');
     for (let i = 0; i < entityObject.jobTitleList.length; i++) {
         jobTitles[i].innerHTML = jobTitlesCount[i].length;
+        jobTitles[3].innerHTML = 3;
     }
 }
 
-function isEmployee(){
-    
-    if(hasEmployee.innerHTML <= 0){
+function isEmployee() {
+
+    if (hasEmployee.innerHTML <= 0) {
         displayNoContactFound('No employee present');
     }
 }
 
 //function to highlight clicked filter background
-function highlightFilter(activeFilter ,isString){
+function highlightFilter(activeFilter, isString) {
 
     var list;
-    if(isString ===''){
-         list= getElement('filterLeftSection').querySelectorAll('li');
-    }else{
+    if (isString === '') {
+        list = getElement('filterLeftSection').querySelectorAll('li');
+    } else {
         list = getElement('filterByLetter').querySelectorAll('li');
     }
 
-        for(let li of list){
-            li.style.backgroundColor='';
-            li.style.color='';
-        }
+    for (let li of list) {
+        li.style.color = '';
+    }
 
-        hasEmployee = activeFilter.querySelector('span');
-        activeFilter.style.backgroundColor='lightGray';
-        activeFilter.style.color='white';
+    hasEmployee = activeFilter.querySelector('span');
+    activeFilter.style.backgroundColor = 'lightGray';
+    activeFilter.style.color='white';
 }
 
 //filtering the employees based on jobTtitle , office and department
 function findEmployeeByDepartment(department, subDepartment, activeFilter) {
 
-   let count =0;
+    let count = 0;
 
-   count = searchUsingOptions(count, department, subDepartment);
+    count = searchUsingOptions(count, department, subDepartment);
 
-   count <= 0 ? displayNoContactFound('No employee found..!!') : displayNoContactFound('');
+    count <= 0 ? displayNoContactFound('No employee found..!!') : displayNoContactFound('');
 
-   highlightFilter(activeFilter,''); // set current filter background color and also used to find if no employee present display no employee warning
+    highlightFilter(activeFilter, ''); // set current filter background color and also used to find if no employee present display no employee warning
 
 }
 
@@ -490,7 +496,7 @@ function findEmployeeByDepartment(department, subDepartment, activeFilter) {
 function clearSearch() {
     getElement('searchEmployee').value = '';
     clearEmployee();
-    getElement('noContactFound').innerHTML=''
+    getElement('noContactFound').innerHTML = ''
     resetFilters()
     initializeDirectorys();
 }
@@ -501,23 +507,23 @@ function confirmChange(option) {
     option === 'update' ? getElement('modalHeding').innerHTML = 'Update Address' : getElement('modalHeding').innerHTML = 'Delete Address'
 
     var button = getElement('confirmUpdate');;
-   if(option ==='update'){
-        button.setAttribute('onclick','updateEmployeeDirectory(event)');
-        button.innerHTML='Update';
-   }else{
-            button.setAttribute('onclick','deleteDirectory()');
-            button.innerHTML='Delete';
-   }
+    if (option === 'update') {
+        button.setAttribute('onclick', 'updateEmployeeDirectory(event)');
+        button.innerHTML = 'Update';
+    } else {
+        button.setAttribute('onclick', 'deleteDirectory()');
+        button.innerHTML = 'Delete';
+    }
 }
 
-function toggleButtonAttribute(isValid){
-    let button =  getElement('deleteButton');
-    if(isValid){
-        button.setAttribute('onclick','confirmChange("update")');
-        button.innerHTML='Update'
-    }else{
-        button.setAttribute('onclick','confirmChange("delete")');
-        button.innerHTML='Delete'
+function toggleButtonAttribute(isValid) {
+    let button = getElement('deleteButton');
+    if (isValid) {
+        button.setAttribute('onclick', 'confirmChange("update")');
+        button.innerHTML = 'Update'
+    } else {
+        button.setAttribute('onclick', 'confirmChange("delete")');
+        button.innerHTML = 'Delete'
     }
 }
 
@@ -555,132 +561,132 @@ function toogleEditButton(isValid) {
 function disableSelect() {
     var selectElement = getEmployee().querySelectorAll('select');
     selectElement.forEach(element => {
-        element.setAttribute('disabled','disabled');
+        element.setAttribute('disabled', 'disabled');
     });
 }
 
 function enableSelect() {
     var selectElement = getEmployee().querySelectorAll('select');
     selectElement.forEach(element => {
-        element.removeAttribute('disabled','disabled');
+        element.removeAttribute('disabled', 'disabled');
     });
 }
 
 //function to display employees in asending order based on selected entity
-function filterBySelect(selected){
+function filterBySelect(selected) {
     clearEmployee();
     var sortedArray = usersDirectory;
     filterBy = selected.value; // value of selected may be department, office or jobTitle or firstName
 
     sortedArray.sort((a, b) => {
-        var firstEmployee 
+        var firstEmployee
         var secondEmployee
-        switch(filterBy){
+        switch (filterBy) {
             case 'name':
-             firstEmployee = a.firstName.toLowerCase();
-             secondEmployee = b.firstName.toLowerCase();
-             break;
+                firstEmployee = a.firstName.toLowerCase();
+                secondEmployee = b.firstName.toLowerCase();
+                break;
 
-             case 'office':
-             firstEmployee = a.office.toLowerCase();
-             secondEmployee = b.office.toLowerCase();
-              break;
-            
-             case 'jobTitle':
-             firstEmployee = a.jobTitle.toLowerCase();
-             secondEmployee = b.jobTitle.toLowerCase();
-             break;
+            case 'office':
+                firstEmployee = a.office.toLowerCase();
+                secondEmployee = b.office.toLowerCase();
+                break;
 
-             case 'department':
-             firstEmployee = a.department.toLowerCase();
-             secondEmployee = b.department.toLowerCase();
-             break;
+            case 'jobTitle':
+                firstEmployee = a.jobTitle.toLowerCase();
+                secondEmployee = b.jobTitle.toLowerCase();
+                break;
+
+            case 'department':
+                firstEmployee = a.department.toLowerCase();
+                secondEmployee = b.department.toLowerCase();
+                break;
         }
 
         if (firstEmployee < secondEmployee) return -1;
         if (firstEmployee > secondEmployee) return 1;
         return 0;
-      });
-
-      sortedArray.forEach(employee => {
-        createEmployee(employee);
-      });
-}   
-      
-// event listener added to Entity select in Add entity form based on selection options in bottom select will load
-       getElement('selectEntity').addEventListener('change', function() {
-        var selectedEntity = this.value;
-        var options = entityOptions[selectedEntity] || [];
-    
-        var entityTypeSelect = getElement('entityType');
-        entityTypeSelect.innerHTML = ''; 
-    
-        options.forEach(function(value) {
-            var option = document.createElement('option');
-            option.value = value;
-            option.text = value;
-            insertElement(entityTypeSelect, option);
-        });
     });
 
+    sortedArray.forEach(employee => {
+        createEmployee(employee);
+    });
+}
+
+// event listener added to Entity select in Add entity form based on selection options in bottom select will load
+getElement('selectEntity').addEventListener('change', function () {
+    var selectedEntity = this.value;
+    var options = entityOptions[selectedEntity] || [];
+
+    var entityTypeSelect = getElement('entityType');
+    entityTypeSelect.innerHTML = '';
+
+    options.forEach(function (value) {
+        var option = document.createElement('option');
+        option.value = value;
+        option.text = value;
+        insertElement(entityTypeSelect, option);
+    });
+});
+
 //adding new entity or option inside entity
-    function addFilter(){
-        
-            var entity = getElement('selectEntity').value;
-            var entityType=getElement('entityType').value;
+function addFilter() {
 
-             switch(entity){
+    var entity = getElement('selectEntity').value;
+    var entityType = getElement('entityType').value;
 
-                case 'department':
-                    var isValid = entityObject.departmentList.filter(user => user.toLowerCase() === entityType.toLowerCase());
-                    if(isValid.length <= 0){
-                        createFilter(entity, entityType);
-                        entityObject.departmentList.push(entityType);
-                        updateEntity();
-                    }
-                    break;
+    switch (entity) {
 
-                case 'office':
-                    var isValid = entityObject.officeList.filter(user => user.toLowerCase() === entityType.toLowerCase());
-                    if(isValid.length <= 0){
-                        createFilter(entity, entityType);
-                        entityObject.officeList.push(entityType);
-                        updateEntity();
-                    }
-                    break;
-
-                case 'jobTitle':
-                    var isValid = entityObject.jobTitleList.filter(user => user.toLowerCase() === entityType.toLowerCase());
-                    if(isValid.length <= 0){
-                        createFilter(entity, entityType);
-                        entityObject.jobTitleList.push(entityType);
-                         updateEntity();
-                    }    
-                    break;
+        case 'department':
+            var isValid = entityObject.departmentList.filter(user => user.toLowerCase() === entityType.toLowerCase());
+            if (isValid.length <= 0) {
+                createFilter(entity, entityType);
+                entityObject.departmentList.push(entityType);
+                updateEntity();
             }
-            getCountOfEmployee();
+            break;
 
-            populateOptions('inputDepartment', entityObject.departmentList);
-            populateOptions('inputjobTitle', entityObject.jobTitleList);
-            populateOptions('inputOffice', entityObject.officeList);
+        case 'office':
+            var isValid = entityObject.officeList.filter(user => user.toLowerCase() === entityType.toLowerCase());
+            if (isValid.length <= 0) {
+                createFilter(entity, entityType);
+                entityObject.officeList.push(entityType);
+                updateEntity();
+            }
+            break;
+
+        case 'jobTitle':
+            var isValid = entityObject.jobTitleList.filter(user => user.toLowerCase() === entityType.toLowerCase());
+            if (isValid.length <= 0) {
+                createFilter(entity, entityType);
+                entityObject.jobTitleList.push(entityType);
+                updateEntity();
+            }
+            break;
     }
+    getCountOfEmployee();
 
-    //create new option inside entity
+    populateOptions('inputDepartment', entityObject.departmentList);
+    populateOptions('inputjobTitle', entityObject.jobTitleList);
+    populateOptions('inputOffice', entityObject.officeList);
+}
+
+//create new option inside entity
 function createFilter(entity, entityType) {
     var li = document.createElement('li');
     li.setAttribute('onclick', `findEmployeeByDepartment('${entity.toLowerCase()}', '${entityType}' , this)`);
     li.setAttribute('value', entityType);
     li.innerHTML = `${entityType} (<span id='${entityType.toLowerCase()}Count' class='${entity}'></span>)`;
-    getElement(entity+'List').appendChild(li);
+    getElement(entity + 'List').appendChild(li);
 }
 
 // Loop through the entityObject and call createFilter for each array
-function initializeFilters(){
+function initializeFilters() {
     for (var entity in entityObject) {
         if (entityObject.hasOwnProperty(entity)) {  // returns true if element is direct property of object
             var entityType = entity.substring(0, entity.length - 4); // Remove "List" from the entity name
-            entityObject[entity].forEach(function(item) {
-                createFilter( entityType, item);
+            entityObject[entity].forEach(function (item) {
+                createFilter(entityType, item);
             });
         }
     }
@@ -703,8 +709,8 @@ function resetFilters() {
 
 
 
-        
-  
+
+
 
 
 

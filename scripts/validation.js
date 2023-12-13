@@ -17,11 +17,9 @@ function displayError(field, message) {
     var result = 0
     var elements = getByClassName('errorStyle');
     for (var i = 0; i < elements.length; i++) {
-      if(elements[i].innerHTML !== ''){
-        result++;
-      }       
+   
     }
-    if(result>0)  return false; else return true;
+    return true;
   }
   
   //vlaidating input fields on change
@@ -29,7 +27,7 @@ function displayError(field, message) {
   var fname;
 
   function employeeValidation(value, fieldName) {
-    var firstName , lastName, email, mobile, office, department, skype, jobTitle;
+    var firstName , lastName, gender, email, mobile, office, department, skype, jobTitle;
     
     switch (fieldName) {
   
@@ -39,7 +37,7 @@ function displayError(field, message) {
             fname = firstName;
            }
           getElement('inputPreferedName').value =firstName;
-          inputErrors = !namePattern.test(firstName.trim()) ? displayError("firstName", "name can't be empty & start with number") : clearError("firstName");
+          inputErrors = !namePattern.test(firstName.trim()) ? displayError("firstName", "name can't be empty & start without empty") : clearError("firstName");
           break;
 
       case 'lastName':
@@ -47,10 +45,13 @@ function displayError(field, message) {
           getElement('inputPreferedName').value = fname+ " "+lastName;
           inputErrors = !namePattern.test(lastName.trim()) ? displayError("lastName", "name can't be empty & start with number") : clearError("lastName");
           break;
-  
+      case 'gender':
+          gender = value;
+          inputErrors = (gender.trim() === "") ? displayError("gender", "Please select gender") : clearError("gender");
+          break;
       case 'email':
           email = value;
-          inputErrors = (!emailAllowHyphen.test(email.trim()) || !domainMinLength2.test(email.trim()) || !allowMultipleSubDomain.test(email.trim())) ? displayError("email", "Email format is wrong") : clearError("email");
+          inputErrors = (!allowedDomain.test(email.trim())) ? displayError("email", "Email format is wrong") : clearError("email");
           break;
   
       case 'mobile':

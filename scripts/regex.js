@@ -20,3 +20,8 @@ const namePattern = /^[a-zA-Z]/;
 // Website validation code validates protocol and semicolon then domain either start with www or https not  
 //Matches the dot notation for the top-level domain (TLD) and any subsequent subdomains,Matches the optional path,
  const websiteregex = /^(https?:\/\/|www\.)[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]*)?$/;
+
+
+ // gmail validation for domain
+
+ const allowedDomain = /@gmail\.com$/i;
