@@ -528,7 +528,9 @@ function clearSearch() {
     clearEmployee();
     getElement('noContactFound').innerHTML = ''
     resetFilters()
-    setDisplayBlock(getElement('loadingAnimation'));
+    if(usersDirectory.length !== 0){
+        setDisplayBlock(getElement('loadingAnimation'));
+    }
     initializeDirectorys();
     
 }
