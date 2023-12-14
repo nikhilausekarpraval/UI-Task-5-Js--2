@@ -106,6 +106,7 @@
 
 #employeeDirectoryStyle{
     height: 53vh;
+    overflow-y: auto;
 }
 
 .icon-color{
