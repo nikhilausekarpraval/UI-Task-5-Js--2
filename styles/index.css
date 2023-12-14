@@ -44,8 +44,8 @@
 }
 
 .employee-image{
-    width: 64px;
-    height: 64px;
+    width: 66px;
+    height: 69px;
 }
 
 #searchEmployee {
@@ -105,7 +105,7 @@
 }
 
 #employeeDirectoryStyle{
-    height: 53vh;
+    height: 56vh;
     overflow-y: auto;
 }
 

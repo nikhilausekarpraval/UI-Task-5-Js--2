@@ -388,7 +388,7 @@ function searchEmployee(input, letter, isElement) {
     var searchBy = getSearchOption();
     var count = 0;
     letter === '' ? count = searchUsingOptions(count, searchBy, input) : count = searchUsingAlphabet(letter);
-    randomImage();// fixed but here 
+    //randomImage();// fixed but here 
     count <= 0 ? displayNoContactFound('No employee found..!!') : displayNoContactFound('');
 
 }
@@ -457,7 +457,8 @@ function showFilteredEmployee(employee) {
     for (let emp of employee) {
         createEmployee(emp);
     }
-
+    setDisplayBlock(getElement('loadingAnimation'));
+    randomImage();
     return employee.length
 }
 
