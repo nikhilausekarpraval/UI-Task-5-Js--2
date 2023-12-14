@@ -17,6 +17,7 @@ if (!getEntity() || getEntity().length === 0) {
 }
 
 entityObject = getEntity();
+createUserDataForTesting();
 initializeDirectorys();
 initializeFilters();
 noEmployeePresent();
@@ -25,6 +26,43 @@ ifListOverflow();
 createAlphabetFilter();
 randomImage();
 displayModal();
+
+function createUserDataForTesting(){
+    var firstNames = [
+        "Alice", "Bob", "Charlie", "David", "Emily", "Frank", "Grace", "Henry", "Ivy", "Jack",
+        "Kate", "Liam", "Mia", "Noah", "Olivia", "Penny", "Quinn", "Ryan", "Sophia", "Thomas",
+        "Uma", "Vincent", "Willow", "Xander", "Yara", "Zane"
+    ];
+    
+    function getRandomNumber(upperLimit) {
+        return Math.floor(Math.random() * (upperLimit + 1));
+    }
+
+    // Array of last names
+    var lastNames = [
+        "Anderson", "Brown", "Carter", "Davis", "Evans", "Fisher", "Garcia", "Harris", "Irwin", "Jones",
+        "Kim", "Lee", "Miller", "Nelson", "Owens", "Perez", "Quinn", "Reyes", "Smith", "Taylor",
+        "Upton", "Vargas", "Walker", "Xiao", "Yates", "Zimmerman"
+    ];
+    for (var i = 0; i < 26; i++) {
+        var formData = {
+            id: generateGuid(),
+            firstName: firstNames[i], // ASCII code for 'A' is 65
+            lastName: lastNames[i], // Adding a unique identifier for the last name
+            gender: "Male", // You may modify this as needed
+            email: "user" + i + "@gmail.com", // You may modify this as needed
+            mobile: "1234567890" + i, // You may modify this as needed
+            jobTitle: jobTitles[getRandomNumber(8)], // You may modify this as needed
+            office: offices[getRandomNumber(2)], // You may modify this as needed
+            department: departments[getRandomNumber(3)], // You may modify this as needed
+            skype: "skype@gmail.com" + i // You may modify this as needed
+        };
+    
+        // Push the object to the array
+        usersDirectory.push(formData);
+        updateDirectory();
+    }
+}
 
 function randomImage() {
     getElement('employeeDirectorySection').style.display = 'none';
