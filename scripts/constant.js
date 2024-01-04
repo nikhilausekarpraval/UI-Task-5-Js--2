@@ -13,7 +13,6 @@ const jobTitlesCount=[];
 //list of id of select tag
 const inputSelect=['inputDepartment','inputjobTitle','inputOffice'];
 
-
 const entityOptions = {
     'department':[
         'Select Department',
